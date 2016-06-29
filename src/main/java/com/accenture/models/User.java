@@ -1,4 +1,4 @@
-package netgloo.models;
+package com.accenture.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
