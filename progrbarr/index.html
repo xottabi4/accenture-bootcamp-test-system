@@ -1,0 +1,76 @@
+<!--Made by Victoria-->
+<!DOCTYPE html>
+<html>
+</head>
+	 <meta charset="UTF-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+	<script src="https://sparkalow.github.io/angular-count-to/js/angular-count-to.js"></script>
+	<script src="progressbar.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+
+<body ng-app="app">
+
+<form name="myForm" ng-controller="inputFun">
+<div ng-controller="CounterController">
+<div ng-controller="ProgressBarCtrl">
+<div ng-controller="blurController">
+
+<label>Q : 
+	<input type="text" name="input" ng-model="que1.text" ng-pattern="wordQue.word" required ng-trim="false" placeholder="Enter answer here" >
+</label>
+
+<div role="alert">
+    <span class="error" ng-show="myForm.input.$error.required">
+      Required answer!</span>
+  </div>
+</form>
+
+<br>
+<label>Q:
+	<form>
+  <select ng-model="myVar">
+    <option value="">
+    <option value="dogs">Dogs
+    <option value="tuts">Tutorials
+    <option value="cars">Cars
+  </select>
+</form>
+</label>
+<br>
+<br>
+Q:
+<form> 
+  <input type="radio" ng-model="myVar2" value="dogs">Dogs
+  <input type="radio" ng-model="myVar2" value="tuts">Tutorials
+  <input type="radio" ng-model="myVar2" value="cars">Cars
+</form>
+
+<br>
+<br>
+Q:
+<form> 
+  <input type="radio" ng-model="myVar3" value="dogs">Dogs
+  <input type="radio" ng-model="myVar3" value="tuts">Tutorials
+  <input type="radio" ng-model="myVar3" value="cars">Cars
+</form>
+
+<br>
+<br>
+    <uib-progressbar max="max" value="value"><span style="color:white; white-space:nowrap;">{{dinamyc}} / {{max}}</span></uib-progressbar>
+<br>
+<br>
+</div>
+</div>
+<span>Answered Questions: {{number}}</span>
+</div>
+</body>
+</html>
