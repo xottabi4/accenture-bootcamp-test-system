@@ -1,12 +1,15 @@
-package com.accenture.controllers;
+package com.accenture.abts.spring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.accenture.models.User;
-import com.accenture.models.UserDao;
+import com.accenture.abts.spring.dao.UserDao;
+import com.accenture.abts.spring.models.User;
+
+
+//TODO THIS IS EXAMPLE DELETE IT IN PRODUCTION
 
 /**
  * A class to test interactions with the MySQL database using the UserDao class.
@@ -71,13 +74,13 @@ public class UserController {
   public String getByEmail(String email) {
     String userId;
     try {
-      User user = userDao.findByEmail(email);
-      userId = String.valueOf(user.getId());
+   //   User user = userDao.findByEmail(email);
+  //    userId = String.valueOf(user.getId());
     }
     catch (Exception ex) {
       return "User not found";
     }
-    return "The user id is: " + userId;
+    return "The user id is: "; //+ userId;
   }
   
   /**
@@ -112,3 +115,5 @@ public class UserController {
   private UserDao userDao;
   
 } // class UserController
+
+
