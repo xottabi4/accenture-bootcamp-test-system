@@ -1,4 +1,4 @@
-package netgloo.models;
+package com.accenture.models;
 
 import javax.transaction.Transactional;
 
