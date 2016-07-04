@@ -1,0 +1,18 @@
+<form>
+    <div class="form-group"
+         ng-class="{'has-error is-focused' : authenticationError}">
+        <input id="email" ng-model="email" type="text" class="form-control"
+               required="required" placeholder="login"/>
+        <span ng-show="authenticationError" class="help-block">
+            Please check your credentials and try again.
+        </span>
+    </div>
+ 
+    <div class="form-group">
+        <input id="password" ng-model="password" type="password" class="form-control"
+               required="required" placeholder="password"/>
+    </div>
+ 
+    
+    <button ng-click="login()" >Login</button>
+</form>

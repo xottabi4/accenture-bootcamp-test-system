@@ -1,17 +1,23 @@
 package com.accenture.abts.spring.models;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User implements Serializable{
 
 	/**
@@ -40,12 +46,18 @@ public class User implements Serializable{
 	@Column(name = "security_code")
 	private String securityCode;
 
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id", table = "roles", referencedColumnName = "role_id") })
+	private Set<Role> roles = new HashSet<Role>();
+	
+
 	public User() {
 	}
 
 	public User(Long user_id) {
 		this.id = user_id;
 	}
+	
 
 	public User(String email, String name) {
 		this.email = email;
@@ -90,6 +102,14 @@ public class User implements Serializable{
 
 	public void setSecurityCode(String securityCode) {
 		this.securityCode = securityCode;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 
