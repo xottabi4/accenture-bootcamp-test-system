@@ -7,9 +7,9 @@ myapp.directive('access', [
                 var roles = attrs.access.split(',');
                 if (roles.length > 0) {
                     if (AuthSharedService.isAuthorized(roles)) {
-                        element.removeClass('hide');
-                    } else {
                         element.addClass('hide');
+                    } else {
+                    	element.removeClass('hide');
                     }
                 }
             }

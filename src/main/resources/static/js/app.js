@@ -12,9 +12,33 @@ myapp.constant('USER_ROLES', {
 });
 
 myapp.config(function($routeProvider, USER_ROLES) {
+
     $routeProvider.when("/applicant", {
         templateUrl: "views/applicant/test_form.html",
         controller: 'HomeController',
+        access: {
+            loginRequired: true,
+            authorizedRoles: [USER_ROLES.applicant]
+        }
+    }).when("/applicant/english-test", {
+        templateUrl: "views/applicant/test_form.html",
+        controller: 'HomeController',
+        access: {
+            loginRequired: true,
+            authorizedRoles: [USER_ROLES.applicant]
+        }
+
+    }).when("/applicant/tehnical-test", {
+        templateUrl: 'test_form.html',
+        controller: 'TehnicalController',
+        access: {
+            loginRequired: true,
+            authorizedRoles: [USER_ROLES.applicant]
+        }
+
+    }).when("/applicant/english-test", {
+        templateUrl: "test_form.html",
+        controller: 'EngilshController',
         access: {
             loginRequired: true,
             authorizedRoles: [USER_ROLES.applicant]
@@ -36,23 +60,14 @@ myapp.config(function($routeProvider, USER_ROLES) {
     }).when('/', {
         resolve: {
             "check": function($location, Session) {
-                console.log(Session.roles);
-
                 if (Session.roles == USER_ROLES.applicant) {
-                    // redirectTo: '/applicant'
-                    console.log(Session.roles);
                     $location.path('/applicant');
                 } else if (Session.roles == USER_ROLES.grader) {
-                    // redirectTo: '/grader'
-                    console.log(Session.roles);
                     $location.path('/grader');
                 } else if (Session.roles == USER_ROLES.reviewer) {
-                    // redirectTo: '/reviewer'
-                    console.log(Session.roles);
                     $location.path('/reviewer');
                 } else {
                     console.log('not logged in ');
-                    // redirectTo: '/error/404'
                     $location.path('/error/404');
                 }
             }
@@ -117,12 +132,12 @@ myapp
                             "event:auth-forbidden", {});
                     }
                 });
-        //do i need it?
+        // do i need it?
         // $rootScope.$on('$routeChangeSuccess', function(scope, next,
-        //     current) {
-        //     $rootScope.$evalAsync(function() {
-        //         $.material.init();
-        //     });
+        // current) {
+        // $rootScope.$evalAsync(function() {
+        // $.material.init();
+        // });
         // });
 
         // Call when the the client is confirmed
@@ -134,21 +149,7 @@ myapp
                     $rootScope.loadingAccount = false;
                     var nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl :
                         "/");
-                    // angular.forEach(Session.roles, function(value, key) {
-                    //         if (value.name == USER_ROLES.applicant) {
-                    //             nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl :
-                    //                 "/applicant");
-                    //             break;
-                    //         } else if (value.name == USER_ROLES.grader) {
-                    //             nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl :
-                    //                 "/grader");
-                    //             break;
-                    //         } else if (value.name == USER_ROLES.reviewer) {
-                    //             nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl :
-                    //                 "/reviewer");
-                    //             break;
-                    //         }
-                    //     }
+                    document.getElementById("navbar").className = "navbar navbar-inverse";
                     var delay = ($location.path() === "/loading" ? 1000 :
                         0);
 
@@ -160,7 +161,6 @@ myapp
                     }, delay);
 
                 });
-
 
         // Call when the 401 response is returned by the server
         $rootScope.$on('event:auth-loginRequired', function(event, data) {
@@ -185,6 +185,7 @@ myapp
         // Call when the user logs out
         $rootScope.$on('event:auth-loginCancelled', function() {
             $location.path('/login').replace();
+            document.getElementById("navbar").className = "navbar navbar-inverse hidden-xs hidden-sm hidden-md hidden-lg";
         });
 
         // Get already authenticated user account
