@@ -49,19 +49,30 @@ app.controller('CounterController', function($scope) {
 
 //funkcija, lai .html failaa nevajadzeetu katrai formai likt ng-blur
 app.controller('blurController', function($scope, $element) {
-	
+	$scope.InVar = 0;
+	$scope.SelVar = 0;
+	$scope.RadVar = 0;
 
 	$element.find('input').on('blur', function() {
-    	$scope.increment();
+	if($scope.InVar===0){    	
+	$scope.increment();
 	$scope.increase();
+	$scope.InVar++;
+	}
 	});
 	$element.find('select').on('blur', function() {
-	    $scope.increment();
+	if($scope.SelVar===0){
+	$scope.increment();
 	$scope.increase();
+	$scope.SelVar++;
+	}
 	});
 	$element.find('radio').on('blur', function() {	   
-	 $scope.increment();
+	if($scope.RadVar===0){	
+	$scope.increment();
 	$scope.increase();
+	$scope.RadVar++;
+	}
 	});
 });
 
