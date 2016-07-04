@@ -19,4 +19,8 @@ public class UserServiceImpl implements UserService {
 		return userDao.findByEmailAndSecurityCode(email, securityCode);
 	}
 
+	public User findUser(String email) {
+		return userDao.findByEmail(email);
+	}
+
 }

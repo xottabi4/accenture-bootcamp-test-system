@@ -4,4 +4,5 @@ import com.accenture.abts.spring.models.User;
 
 public interface UserService {
 	public User findUser(String email, String securityCode);
+	public User findUser(String email);
 }

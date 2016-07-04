@@ -1,65 +1,45 @@
-<!doctype html>
-<html lang="en-EN">
-	<head>
-		<title> accenture bootcamp test system </title>
+<link rel="stylesheet" type="text/css" href="css/syles.css"/>
 
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8 ">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/syles.css"/>
-		<script src="js/login.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-		
+<div class="container">
 
-	</head>
-	
-	<body ng-app="App">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-
-		<div class="container">
-
-			<div class="row">
-				<div class="Absolute-Center is-Responsive">
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-						<img alt="Accenture-logo" src="http://blogs.splunk.com/wp-content/uploads/2016/04/Accenture-logo.png" height=100% width=100% />
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="Absolute-Center is-Responsive">
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-						<h1> Welcome to Accenture bootcamp test system </h1>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="Absolute-Center is-Responsive">
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-						<form class="pure-form">
-							<fieldset class="form-group">
-								<label for="exampleInputEmail1">Email address</label>	
-								<input type="email" class="form-control" id="Email" placeholder="Enter email">
-								<small class="text-muted">We'll never share your email with anyone else.</small>
-							</fieldset>
-																				  
-							<fieldset class="form-group">
-								<label for="exampleInputPassword1">Password</label>
-								<input type="password" class="form-control" id="Password" placeholder="Password">
-							</fieldset>
-																													
-							<button ng-click="newPage()" type="submit" class="btn btn-success navbar-right" id="sing" >Sign in</button>		
-					
-						</form>
-					</div>
-				</div>
+	<div class="row">
+		<div class="Absolute-Center is-Responsive">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<img alt="Accenture-logo" src="images/Accenture-logo.jpeg" height=100% width=100% />
 			</div>
 		</div>
-		
+	</div>
 
-	</body>
-	
-</html>
+	<div class="row">
+		<div class="Absolute-Center is-Responsive">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<h1>Welcome to Accenture bootcamp test system</h1>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="Absolute-Center is-Responsive">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<form class="pure-form" ng-class="{'has-error is-focused' : authenticationError}">
+					<span ng-show="authenticationError" class="help-block"> Please
+						check your credentials and try again. </span>
+					<fieldset class="form-group">
+						<label for="exampleInputEmail1">Email address</label>
+						<input type="email" ng-model="email" required="required" class="form-control" id="Email" placeholder="Enter email">
+						<small class="text-muted">We'll never share your email
+							with anyone else.</small>
+					</fieldset>
+
+					<fieldset class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<input type="password" ng-model="password" required="required" class="form-control" id="Password" placeholder="Password">
+					</fieldset>
+
+					<button type="submit" ng-click="login()" class="btn btn-success navbar-right" id="sing">Sign in</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
