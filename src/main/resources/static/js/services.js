@@ -74,30 +74,3 @@ myapp.service('AuthSharedService', function($rootScope, $http, $resource,
         }
     };
 });
-
-// myapp.service('HomeService', function($log, $resource) {
-//     return {
-//         getName: function() {
-//             var userResource = $resource('resources/json/techno.json', {}, {
-//                 query: {
-//                     method: 'GET',
-//                     params: {},
-//                     isArray: true
-//                 }
-//             });
-//             return userResource.query();
-//         }
-//     }
-// });
-//
-//
-// myapp.service('UsersService', function ($log, $resource) {
-// return {
-// getAll: function () {
-// var userResource = $resource('users', {}, {
-// query: {method: 'GET', params: {}, isArray: true}
-// });
-// return userResource.query();
-// }
-// }
-// });

@@ -34,7 +34,29 @@ myapp.config(function($routeProvider, USER_ROLES) {
             authorizedRoles: [USER_ROLES.reviewer]
         }
     }).when('/', {
-        redirectTo: '/applicant'
+        resolve: {
+            "check": function($location, Session) {
+                console.log(Session.roles);
+
+                if (Session.roles == USER_ROLES.applicant) {
+                    // redirectTo: '/applicant'
+                    console.log(Session.roles);
+                    $location.path('/applicant');
+                } else if (Session.roles == USER_ROLES.grader) {
+                    // redirectTo: '/grader'
+                    console.log(Session.roles);
+                    $location.path('/grader');
+                } else if (Session.roles == USER_ROLES.reviewer) {
+                    // redirectTo: '/reviewer'
+                    console.log(Session.roles);
+                    $location.path('/reviewer');
+                } else {
+                    console.log('not logged in ');
+                    // redirectTo: '/error/404'
+                    $location.path('/error/404');
+                }
+            }
+        }
     }).when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginController',
