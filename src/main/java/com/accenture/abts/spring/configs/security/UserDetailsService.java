@@ -36,7 +36,6 @@ public class UserDetailsService implements org.springframework.security.core.use
 			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getName());
 			grantedAuthorities.add(grantedAuthority);
 		}
-		System.out.println(user.getEmail());
 		return new org.springframework.security.core.userdetails.User(email, user.getSecurityCode(),
 				grantedAuthorities);
 	}

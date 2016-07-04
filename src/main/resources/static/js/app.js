@@ -81,18 +81,6 @@ myapp
                     if (next.originalPath === "/login" &&
                         $rootScope.authenticated) {
                         event.preventDefault();
-                    // } else if (next.originalPath === "/" &&
-                    //     $rootScope.authenticated && Session.roles === USER_ROLES.applicant) {
-                    //     $location.path(($rootScope.requestedUrl ? $rootScope.requestedUrl :
-                    //         "/applicant")).replace();
-                    // } else if (next.originalPath === "/" &&
-                    //     $rootScope.authenticated && Session.roles === USER_ROLES.grader) {
-                    //     $location.path(($rootScope.requestedUrl ? $rootScope.requestedUrl :
-                    //         "/grader")).replace();
-                    // } else if (next.originalPath === "/" &&
-                    //     $rootScope.authenticated && Session.roles === USER_ROLES.reviewer) {
-                    //     $location.path(($rootScope.requestedUrl ? $rootScope.requestedUrl :
-                    //         "/reviewer")).replace();
                     } else if (next.access &&
                         next.access.loginRequired &&
                         !$rootScope.authenticated) {
@@ -139,21 +127,6 @@ myapp
                     //             break;
                     //         }
                     //     }
-
-
-                    // (value.name == USER_ROLES.applicant) {
-                    //             nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl :
-                    //                 "/applicant");
-                    //             break;
-                    //         } else if (value.name == USER_ROLES.grader) {
-                    //             nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl :
-                    //                 "/grader");
-                    //             break;
-                    //         } else if (value.name == USER_ROLES.reviewer) {
-                    //             nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl :
-                    //                 "/reviewer");
-                    //             break;
-                    //         }
                     var delay = ($location.path() === "/loading" ? 1000 :
                         0);
 

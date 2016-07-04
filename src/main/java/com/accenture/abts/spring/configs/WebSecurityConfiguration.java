@@ -65,6 +65,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/failure").permitAll()
                 .antMatchers("/applicant/**").hasAnyAuthority("applicant")
+                .antMatchers("/grader/**").hasAnyAuthority("grader")
+                .antMatchers("/reviewer/**").hasAnyAuthority("reviewer")
                 .anyRequest().authenticated()
                 .and()
             .exceptionHandling()
