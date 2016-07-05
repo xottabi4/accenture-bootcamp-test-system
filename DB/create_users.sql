@@ -16,12 +16,12 @@ select * from user_roles;
 select * from roles;
 
 
-INSERT INTO test(test_name,duration)
-VALUES ('first',10000);
-
-INSERT INTO test(test_name)
-VALUES ('second');
-select * from test;
-
-
-
+-- INSERT INTO test(test_name,duration)
+-- VALUES ('first',10000);
+-- 
+-- INSERT INTO test(test_name)
+-- VALUES ('second');
+-- select * from test;
+-- 
+-- 
+-- 
