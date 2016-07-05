@@ -111,12 +111,12 @@ myapp.run(function($rootScope, $location, $http, AuthSharedService, Session,
         }
     });
     // do i need it?
-    $rootScope.$on('$routeChangeSuccess', function(scope, next,
-        current) {
-        $rootScope.$evalAsync(function() {
-            $.material.init();
-        });
-    });
+    // $rootScope.$on('$routeChangeSuccess', function(scope, next,
+    //     current) {
+    //     $rootScope.$evalAsync(function() {
+    //         $.material.init();
+    //     });
+    // });
 
     // Call when the the client is confirmed
     $rootScope.$on('event:auth-loginConfirmed', function(event, data) {
