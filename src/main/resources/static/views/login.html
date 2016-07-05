@@ -1,45 +1,42 @@
-<link rel="stylesheet" type="text/css" href="css/syles.css"/>
+<link rel="stylesheet" type="text/css" href="css/syles.css" />
 
-<div class="container">
-
-	<div class="row">
-		<div class="Absolute-Center is-Responsive">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<img alt="Accenture-logo" src="images/Accenture-logo.jpeg" height=100% width=100% />
-			</div>
+<div class="row">
+	<div class="Absolute-Center is-Responsive">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<img alt="Accenture-logo" src="images/Accenture-logo.jpeg" height=100% width=100% />
 		</div>
 	</div>
+</div>
 
-	<div class="row">
-		<div class="Absolute-Center is-Responsive">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<h1>Welcome to Accenture bootcamp test system</h1>
-			</div>
+<div class="row">
+	<div class="Absolute-Center is-Responsive">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<h1>Welcome to Accenture bootcamp test system</h1>
 		</div>
 	</div>
+</div>
 
-	<div class="row">
-		<div class="Absolute-Center is-Responsive">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<form class="pure-form" ng-class="{'has-error is-focused' : authenticationError}">
-					<span ng-show="authenticationError" class="help-block"> Please
+<div class="row">
+	<div class="Absolute-Center is-Responsive">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<form class="pure-form" ng-class="{'has-error is-focused' : authenticationError}">
+				<span ng-show="authenticationError" class="help-block"> Please
 						check your credentials and try again. </span>
-					<fieldset class="form-group">
-						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" ng-model="email" required="required" class="form-control" id="Email" placeholder="Enter email">
-						<small class="text-muted">We'll never share your email
+				<fieldset class="form-group">
+					<label for="exampleInputEmail1">Email address</label>
+					<input type="email" ng-model="email" required="required" class="form-control" id="Email" placeholder="Enter email">
+					<small class="text-muted">We'll never share your email
 							with anyone else.</small>
-					</fieldset>
+				</fieldset>
 
-					<fieldset class="form-group">
-						<label for="exampleInputPassword1">Password</label>
-						<input type="password" ng-model="password" required="required" class="form-control" id="Password" placeholder="Password">
-					</fieldset>
+				<fieldset class="form-group">
+					<label for="exampleInputPassword1">Password</label>
+					<input type="password" ng-model="password" required="required" class="form-control" id="Password" placeholder="Password">
+				</fieldset>
 
-					<button type="submit" ng-click="login()" class="btn btn-success navbar-right" id="sing">Sign in</button>
+				<button type="submit" ng-click="login()" class="btn btn-success navbar-right" id="sing">Sign in</button>
 
-				</form>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>

@@ -1,77 +1,58 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
+
 <head lang="en">
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
 
-<link rel="icon" type="image/png" href="resources/img/favicon.jpeg" />
+	<!-- <link rel="icon" type="image/png" href="resources/img/favicon.jpeg" /> -->
 
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-sanitize.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-animate.js"></script>
-<script src="lib/js/http-auth-interceptor.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-sanitize.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-animate.js"></script>
+	<script src="lib/js/http-auth-interceptor.js"></script>
 
-
-
-<title></title>
 </head>
+
 <body>
-
-<nav class="navbar navbar-inverse hidden-xs hidden-sm hidden-md hidden-lg" access='applicant, grader, reviewer' id="navbar">
+	<!-- access='applicant, grader, reviewer' -->
+	<nav class="navbar navbar-default hide" id="navbar">
 		<div class="container-fluid">
-
-			<nav class="navbar navbar-default">
-
-				<ul class="nav navbar-nav navbar-right nav-pills">
-					<li> <img src="images/Accenture-logo.jpeg" alt="Accenture-logo" class="navbar-brand" align=left height=200px width=200px> </li>
-					<li> <a role="" class="active" href="#applicant/tehnical-test" access='applicant'> Tehnical test </a> </li>
-					<li> <a role="" class="active" href="#applicant/english-test" access='applicant' > English test </a> </li>
-					<li> <a href="#logout"><span></span> Logout</a> </li>
-				</ul>
-
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#/">
+					ACCENTURE LOGO
+				 <!-- <img src="images/Accenture-logo.jpeg" alt="Accenture-logo"  top=0 height=70px width=70px> -->
+				</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li> <a href="#applicant/tehnical-test" access="applicant"> Tehnical test </a> </li>
+				<li> <a href="#applicant/english-test" access="applicant"> English test </a> </li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#logout"><span
+							class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
 		</div>
-
 	</nav>
-	
 	<div class="container">
-		<!-- <div ng-view="" class="fade"></div> -->
 		<div ng-view=""></div>
 	</div>
 
-	<script src="js/app.js"></script>
 
+	<script src="js/app.js"></script>
+	<script src="js/services.js"></script>
+	<script src="js/directives.js"></script>
 	<script src="js/controllers.js"></script>
 
-	<script src="js/directives.js"></script>
 
-	<script src="js/services.js"></script>
-
-
-	<!-- 
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<div ng-include="'views/login.html'"></div>
-				<div ng-view></div>
-			</div>
-		</div>
-	</div>
- -->
 </body>
 
 </html>
