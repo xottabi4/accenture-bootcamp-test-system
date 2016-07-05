@@ -9,19 +9,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema onlinetestDB
+-- Schema accenture
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema onlinetestDB
+-- Schema accenture
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `onlinetestDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `onlinetestDB` ;
+CREATE SCHEMA IF NOT EXISTS `accenture` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `accenture` ;
 
 -- -----------------------------------------------------
--- Table `onlinetestDB`.`user`
+-- Table `accenture`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onlinetestDB`.`user` (
+CREATE TABLE IF NOT EXISTS `accenture`.`user` (
   `user_id` INT(8) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NULL,
   `surname` VARCHAR(60) NULL,
@@ -32,9 +32,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetestDB`.`test`
+-- Table `accenture`.`test`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onlinetestDB`.`test` (
+CREATE TABLE IF NOT EXISTS `accenture`.`test` (
   `test_id` INT(8) NOT NULL,
   `test_name` VARCHAR(45) NULL,
   `duration` TIMESTAMP NULL,
@@ -43,27 +43,27 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetestDB`.`questions`
+-- Table `accenture`.`questions`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onlinetestDB`.`questions` (
+CREATE TABLE IF NOT EXISTS `accenture`.`questions` (
   `question_no` INT(4) NOT NULL AUTO_INCREMENT,
   `test_id` INT(8) NULL,
   `question_text` TEXT(500) NULL COMMENT 'question text',
   PRIMARY KEY (`question_no`),
   CONSTRAINT `testid_fk`
     FOREIGN KEY (`test_id`)
-    REFERENCES `onlinetestDB`.`test` (`test_id`)
+    REFERENCES `accenture`.`test` (`test_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `testid_fk_idx` ON `onlinetestDB`.`questions` (`test_id` ASC);
+CREATE INDEX `testid_fk_idx` ON `accenture`.`questions` (`test_id` ASC);
 
 
 -- -----------------------------------------------------
--- Table `onlinetestDB`.`question_option`
+-- Table `accenture`.`question_option`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onlinetestDB`.`question_option` (
+CREATE TABLE IF NOT EXISTS `accenture`.`question_option` (
   `qop_id` INT(8) NOT NULL AUTO_INCREMENT,
   `test_id` INT(8) NULL,
   `question_no` INT(4) NULL,
@@ -72,18 +72,18 @@ CREATE TABLE IF NOT EXISTS `onlinetestDB`.`question_option` (
   PRIMARY KEY (`qop_id`),
   CONSTRAINT `question_no`
     FOREIGN KEY (`question_no`)
-    REFERENCES `onlinetestDB`.`questions` (`question_no`)
+    REFERENCES `accenture`.`questions` (`question_no`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `question_no_idx` ON `onlinetestDB`.`question_option` (`question_no` ASC);
+CREATE INDEX `question_no_idx` ON `accenture`.`question_option` (`question_no` ASC);
 
 
 -- -----------------------------------------------------
--- Table `onlinetestDB`.`answer_text`
+-- Table `accenture`.`answer_text`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onlinetestDB`.`answer_text` (
+CREATE TABLE IF NOT EXISTS `accenture`.`answer_text` (
   `at_id` INT NOT NULL AUTO_INCREMENT,
   `test_id` INT(8) NULL,
   `question_no` INT(4) NULL COMMENT 'q number.',
@@ -91,18 +91,18 @@ CREATE TABLE IF NOT EXISTS `onlinetestDB`.`answer_text` (
   PRIMARY KEY (`at_id`),
   CONSTRAINT `question_no_foreign`
     FOREIGN KEY (`question_no`)
-    REFERENCES `onlinetestDB`.`questions` (`question_no`)
+    REFERENCES `accenture`.`questions` (`question_no`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `question_no_foreign_idx` ON `onlinetestDB`.`answer_text` (`question_no` ASC);
+CREATE INDEX `question_no_foreign_idx` ON `accenture`.`answer_text` (`question_no` ASC);
 
 
 -- -----------------------------------------------------
--- Table `onlinetestDB`.`user_response`
+-- Table `accenture`.`user_response`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onlinetestDB`.`user_response` (
+CREATE TABLE IF NOT EXISTS `accenture`.`user_response` (
   `response_id` INT(8) NOT NULL AUTO_INCREMENT,
   `test_id` INT(8) NULL,
   `option_val` VARCHAR(10) NULL,
@@ -110,46 +110,46 @@ CREATE TABLE IF NOT EXISTS `onlinetestDB`.`user_response` (
   PRIMARY KEY (`response_id`),
   CONSTRAINT `test_id_fk1`
     FOREIGN KEY (`test_id`)
-    REFERENCES `onlinetestDB`.`question_option` (`qop_id`)
+    REFERENCES `accenture`.`question_option` (`qop_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `testidforeign`
     FOREIGN KEY (`test_id`)
-    REFERENCES `onlinetestDB`.`answer_text` (`at_id`)
+    REFERENCES `accenture`.`answer_text` (`at_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `test_id_fk1_idx` ON `onlinetestDB`.`user_response` (`test_id` ASC);
+CREATE INDEX `test_id_fk1_idx` ON `accenture`.`user_response` (`test_id` ASC);
 
 
 -- -----------------------------------------------------
--- Table `onlinetestDB`.`user_test`
+-- Table `accenture`.`user_test`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onlinetestDB`.`user_test` (
+CREATE TABLE IF NOT EXISTS `accenture`.`user_test` (
   `user_id` INT(8) NOT NULL,
   `test_id` INT(8) NOT NULL,
   `date` DATE NULL,
   PRIMARY KEY (`user_id`, `test_id`),
   CONSTRAINT `user_id`
     FOREIGN KEY (`user_id`)
-    REFERENCES `onlinetestDB`.`user` (`user_id`)
+    REFERENCES `accenture`.`user` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `test_id`
     FOREIGN KEY (`test_id`)
-    REFERENCES `onlinetestDB`.`user_response` (`response_id`)
+    REFERENCES `accenture`.`user_response` (`response_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `test_id_idx` ON `onlinetestDB`.`user_test` (`test_id` ASC);
+CREATE INDEX `test_id_idx` ON `accenture`.`user_test` (`test_id` ASC);
 
 
 -- -----------------------------------------------------
--- Table `onlinetestDB`.`roles`
+-- Table `accenture`.`roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onlinetestDB`.`roles` (
+CREATE TABLE IF NOT EXISTS `accenture`.`roles` (
   `role_id` INT(8) NOT NULL AUTO_INCREMENT,
   `role_type` VARCHAR(45) NULL,
   PRIMARY KEY (`role_id`))
@@ -157,25 +157,25 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `onlinetestDB`.`user_roles`
+-- Table `accenture`.`user_roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `onlinetestDB`.`user_roles` (
+CREATE TABLE IF NOT EXISTS `accenture`.`user_roles` (
   `user_id` INT(8) NOT NULL,
   `role_id` INT(8) NOT NULL,
   PRIMARY KEY (`user_id`, `role_id`),
   CONSTRAINT `fkuserid`
     FOREIGN KEY (`user_id`)
-    REFERENCES `onlinetestDB`.`user` (`user_id`)
+    REFERENCES `accenture`.`user` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fkroleid`
     FOREIGN KEY (`role_id`)
-    REFERENCES `onlinetestDB`.`roles` (`role_id`)
+    REFERENCES `accenture`.`roles` (`role_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fkroleid_idx` ON `onlinetestDB`.`user_roles` (`role_id` ASC);
+CREATE INDEX `fkroleid_idx` ON `accenture`.`user_roles` (`role_id` ASC);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

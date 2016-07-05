@@ -1,3 +1,4 @@
+/*
 package com.accenture.abts.spring.models;
 
 import javax.persistence.Column;
@@ -78,3 +79,4 @@ public class UserResponse {
 	
 
 }
+*/
