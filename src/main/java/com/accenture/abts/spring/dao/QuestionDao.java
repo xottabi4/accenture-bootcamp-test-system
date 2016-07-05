@@ -7,12 +7,10 @@ import javax.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 
 import com.accenture.abts.spring.models.Question;
-import com.accenture.abts.spring.models.QuestionOption;
+import com.accenture.abts.spring.models.Test;
+
 
 @Transactional
-public interface QuestionOptionDao extends CrudRepository<QuestionOption, Long> {
-	List<QuestionOption> findByQuestion(Question question);
-	
-	
-	
+public interface QuestionDao  extends CrudRepository<Question, Long>{
+	List<Question> findByTest(Test test);
 }

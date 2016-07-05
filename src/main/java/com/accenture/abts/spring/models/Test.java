@@ -14,46 +14,35 @@ public class Test {
 	@Column(name = "test_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(name = "test_name")
-	private String test_name;
-	
-	
+	private String name;
+
 	@Column(name = "duration")
 	private String duration;
-
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-	public String getTest_name() {
-		return test_name;
+	public String getName() {
+		return name;
 	}
 
-
-	public void setTest_name(String test_name) {
-		this.test_name = test_name;
+	public void setName(String name) {
+		this.name = name;
 	}
-
 
 	public String getDuration() {
 		return duration;
 	}
 
-
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
-	
-	
-	
 
 }
-
