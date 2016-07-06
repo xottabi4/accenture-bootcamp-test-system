@@ -1,0 +1,17 @@
+
+<div ng-controller="json">
+		<div ng:repeat="i in questions">
+		<ul>
+			<div ng-if="test[i]==answer_test">
+				<li> questions number. {{i.ouestions_no}} {{i.answer_test}} </li>
+			</div>
+			
+			<div ng-if="test[i]==option_test">
+				<div ng:repeat="j in i">
+					<li> questions number. {{j.ouestions_no}} {{j.answer_test}} </li>
+				</div>
+			</div>
+		</ul>			
+	</div>
+</div>
+
