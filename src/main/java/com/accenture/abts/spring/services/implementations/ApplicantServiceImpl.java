@@ -43,8 +43,8 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 		for (Question question : questions) {
 			questionOptions = questionOptionDao.findByQuestion(question);
-			tmp = new QuestionJson(question.getId(), question.getText(), null);
-			if (questionOptions != null) {
+			tmp = new QuestionJson(question.getNumber(), question.getText(), null);
+			if (questionOptions.size() > 0) {
 				for (QuestionOption questionOption : questionOptions) {
 					options.add(questionOption.getOptionVal());
 				}

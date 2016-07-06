@@ -15,9 +15,13 @@ import javax.validation.constraints.NotNull;
 public class Question {
 
 	@Id
-	@Column(name = "question_no")
+	@Column(name = "question_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
+	@NotNull
+	@Column(name = "question_no")
+	private Long number;
 
 	@ManyToOne
 	@JoinColumn(name = "test_id")
@@ -33,6 +37,14 @@ public class Question {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getNumber() {
+		return number;
+	}
+
+	public void setNumber(Long number) {
+		this.number = number;
 	}
 
 	public Test getTest() {

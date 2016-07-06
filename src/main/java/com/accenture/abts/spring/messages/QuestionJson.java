@@ -1,6 +1,7 @@
 package com.accenture.abts.spring.messages;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionJson implements Serializable{
@@ -41,7 +42,11 @@ public class QuestionJson implements Serializable{
 	}
 
 	public void setOptions(List<String> options) {
-		this.options = options;
+		List<String> newOptions= new ArrayList<>();
+		for (String option : options) {
+			newOptions.add(option);
+		}
+		this.options = newOptions;
 	}
 
 }

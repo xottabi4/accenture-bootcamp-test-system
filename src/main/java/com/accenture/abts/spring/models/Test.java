@@ -38,7 +38,9 @@ public class Test implements Serializable{
 		this.duration = duration;
 		this.isAlive = isAlive;
 	}
-
+	public Test(){
+		
+	}
 	public Long getId() {
 		return id;
 	}

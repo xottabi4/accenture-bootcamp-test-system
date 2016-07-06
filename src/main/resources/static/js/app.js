@@ -8,7 +8,7 @@ myapp.constant('USER_ROLES', {
     all: '*',
     grader: 'grader',
     applicant: 'applicant',
-    reviewer: 'reviewer'
+    recruiter: 'recruiter'
 });
 
 myapp.config(function($routeProvider, USER_ROLES) {
@@ -35,17 +35,17 @@ myapp.config(function($routeProvider, USER_ROLES) {
         }
     }).when("/grader", {
         templateUrl: "views/grader/test.html",
-        controller: 'HomeController',
+        controller: 'GraderController',
         access: {
             loginRequired: true,
             authorizedRoles: [USER_ROLES.grader]
         }
-    }).when("/reviewer", {
-        templateUrl: "views/reviewer/test.html",
-        controller: 'HomeController',
+    }).when("/recruiter", {
+        templateUrl: "views/recruiter/test.html",
+        controller: 'RecruiterController',
         access: {
             loginRequired: true,
-            authorizedRoles: [USER_ROLES.reviewer]
+            authorizedRoles: [USER_ROLES.recruiter]
         }
     }).when('/', {
         resolve: {
@@ -54,8 +54,8 @@ myapp.config(function($routeProvider, USER_ROLES) {
                     $location.path('/applicant');
                 } else if (Session.roles == USER_ROLES.grader) {
                     $location.path('/grader');
-                } else if (Session.roles == USER_ROLES.reviewer) {
-                    $location.path('/reviewer');
+                } else if (Session.roles == USER_ROLES.recruiter) {
+                    $location.path('/recruiter');
                 } else {
                     $location.path('/error/404');
                 }

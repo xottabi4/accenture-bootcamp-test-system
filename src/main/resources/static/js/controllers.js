@@ -14,6 +14,10 @@ myapp.controller('LoginController',
     $scope.message = "This is tehnical test";
 }).controller("EngilshController", function($scope) {
     $scope.message = "This is english test";
+}).controller("GraderController", function($scope, Session) {
+    $scope.email = Session.email;
+}).controller("RecruiterController", function($scope, Session) {
+    $scope.email = Session.email;
 }).controller('ErrorController', function($scope, $routeParams) {
     $scope.code = $routeParams.code;
     switch ($scope.code) {
