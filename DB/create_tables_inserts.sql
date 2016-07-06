@@ -5,6 +5,7 @@ USE `onlinetestDB`;
 -- Host: 127.0.0.1    Database: onlinetestDB
 -- ------------------------------------------------------
 -- Server version	5.5.49-0+deb8u1
+-- Denchik
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,8 +27,8 @@ DROP TABLE IF EXISTS `answer_text`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `answer_text` (
   `at_id` int(8) NOT NULL AUTO_INCREMENT,
-  `question_no` int(4) DEFAULT NULL COMMENT 'q number.',
-  `answer_text` text COMMENT 'answer to question in text form.',
+  `question_no` int(4) NOT NULL COMMENT 'q number.',
+  `answer_text` text NOT NULL COMMENT 'answer to question in text form.',
   PRIMARY KEY (`at_id`),
   KEY `qnofk2_idx` (`question_no`),
   CONSTRAINT `qnofk2` FOREIGN KEY (`question_no`) REFERENCES `questions` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -40,7 +41,7 @@ CREATE TABLE `answer_text` (
 
 LOCK TABLES `answer_text` WRITE;
 /*!40000 ALTER TABLE `answer_text` DISABLE KEYS */;
-INSERT INTO `answer_text` VALUES (1,1,'Sunlight reaches Earth\'s atmosphere and is scattered in all directions by all the gases and particles in the air. Blue light is scattered in all directions by the tiny molecules of air in Earth\'s atmosphere. Blue is scattered more than other colors because it travels as shorter, smaller waves. This is why we see a blue sky most of the time.'),(2,2,NULL),(3,3,'Yes'),(4,1,NULL),(5,2,'class is an extensible program-code-template for creating objects'),(6,3,'Food, medicine');
+INSERT INTO `answer_text` VALUES (1,1,'Sunlight reaches Earth\'s atmosphere and is scattered in all directions by all the gases and particles in the air. Blue light is scattered in all directions by the tiny molecules of air in Earth\'s atmosphere. Blue is scattered more than other colors because it travels as shorter, smaller waves. This is why we see a blue sky most of the time.'),(2,2,''),(3,3,'Yes'),(4,1,''),(5,2,'class is an extensible program-code-template for creating objects'),(6,3,'Food, medicine');
 /*!40000 ALTER TABLE `answer_text` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,9 +54,9 @@ DROP TABLE IF EXISTS `question_option`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `question_option` (
   `qop_id` int(8) NOT NULL AUTO_INCREMENT,
-  `question_no` int(4) DEFAULT NULL,
-  `option_val` varchar(10) DEFAULT NULL,
-  `is_answer` tinyint(1) DEFAULT NULL,
+  `question_no` int(4) NOT NULL,
+  `option_val` varchar(10) NOT NULL,
+  `is_answer` tinyint(1) NOT NULL,
   PRIMARY KEY (`qop_id`),
   KEY `qnofk1_idx` (`question_no`),
   CONSTRAINT `qnofk1` FOREIGN KEY (`question_no`) REFERENCES `questions` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -68,7 +69,7 @@ CREATE TABLE `question_option` (
 
 LOCK TABLES `question_option` WRITE;
 /*!40000 ALTER TABLE `question_option` DISABLE KEYS */;
-INSERT INTO `question_option` VALUES (7,1,NULL,NULL),(8,2,'Dog',1),(9,3,NULL,NULL),(10,1,'4',1),(11,2,NULL,NULL),(12,3,NULL,NULL);
+INSERT INTO `question_option` VALUES (7,1,'',0),(8,2,'Dog',1),(9,3,'',0),(10,1,'4',1),(11,2,'',0),(12,3,'',0);
 /*!40000 ALTER TABLE `question_option` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,9 +82,9 @@ DROP TABLE IF EXISTS `questions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `questions` (
   `question_id` int(8) NOT NULL AUTO_INCREMENT,
-  `question_no` int(4) DEFAULT NULL,
-  `test_id` int(8) DEFAULT NULL,
-  `question_text` text COMMENT 'question text',
+  `question_no` int(4) NOT NULL,
+  `test_id` int(8) NOT NULL,
+  `question_text` text NOT NULL COMMENT 'question text',
   PRIMARY KEY (`question_id`),
   KEY `testidfk123321_idx` (`test_id`),
   CONSTRAINT `testidfk123321` FOREIGN KEY (`test_id`) REFERENCES `test` (`test_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -109,7 +110,7 @@ DROP TABLE IF EXISTS `roles`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `roles` (
   `role_id` int(8) NOT NULL AUTO_INCREMENT,
-  `role_type` varchar(45) DEFAULT NULL,
+  `role_type` varchar(45) NOT NULL,
   PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -133,9 +134,9 @@ DROP TABLE IF EXISTS `test`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test` (
   `test_id` int(8) NOT NULL AUTO_INCREMENT,
-  `test_name` varchar(45) DEFAULT NULL,
-  `duration` int(11) DEFAULT NULL,
-  `is_alive` tinyint(1) DEFAULT NULL,
+  `test_name` varchar(45) NOT NULL,
+  `duration` int(11) NOT NULL,
+  `is_alive` tinyint(1) NOT NULL,
   PRIMARY KEY (`test_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -159,10 +160,10 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `user_id` int(8) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  `surname` varchar(60) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `security_code` varchar(128) DEFAULT NULL,
+  `name` varchar(50) NOT NULL,
+  `surname` varchar(60) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `security_code` varchar(128) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -173,7 +174,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Adolf','Adolf','A@a.a',NULL),(2,'Ibragim','Ibragim','I@I.I',NULL),(3,'Kazbek','Kazbekov','kazbek@k.k',NULL),(4,'Mehmed','Mohammed','M@M.M',NULL);
+INSERT INTO `user` VALUES (1,'Adolf','Adolf','A@a.a','qwerty'),(2,'Ibragim','Ibragim','I@I.I','pass123'),(3,'Kazbek','Kazbekov','kazbek@k.k','priora228'),(4,'Mehmed','Mohammed','M@M.M','akbar15');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,14 +187,12 @@ DROP TABLE IF EXISTS `user_response`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_response` (
   `response_id` int(8) NOT NULL AUTO_INCREMENT,
-  `question_no` int(4) DEFAULT NULL,
-  `test_id` int(8) DEFAULT NULL,
-  `option_val` varchar(10) DEFAULT NULL,
-  `answered_text` text,
+  `question_no` int(4) NOT NULL,
+  `test_id` int(8) NOT NULL,
+  `option_val` varchar(10) NOT NULL,
+  `answered_text` text NOT NULL,
   PRIMARY KEY (`response_id`),
-  KEY `question_numberfk_idx` (`question_no`),
-  CONSTRAINT `question_numberfk` FOREIGN KEY (`question_no`) REFERENCES `answer_text` (`question_no`) ON DELETE NO ACTION ON UPDATE SET NULL,
-  CONSTRAINT `question_numberfk2` FOREIGN KEY (`question_no`) REFERENCES `question_option` (`question_no`) ON DELETE NO ACTION ON UPDATE SET NULL
+  KEY `question_numberfk_idx` (`question_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -203,7 +202,7 @@ CREATE TABLE `user_response` (
 
 LOCK TABLES `user_response` WRITE;
 /*!40000 ALTER TABLE `user_response` DISABLE KEYS */;
-INSERT INTO `user_response` VALUES (1,1,1,'NULL','Blue light is shattered in all directions, like it goes through the prism'),(2,2,1,'Cat',''),(3,3,1,'NULL','Yes'),(4,1,2,'4',''),(5,2,2,'NULL','Class is a template for creating, or instantiating, specific objects within'),(6,3,2,'NULL','It is used as food');
+INSERT INTO `user_response` VALUES (1,1,1,'','Blue light is shattered in all directions, like it goes through the prism'),(2,2,1,'Cat',''),(3,3,1,'','Yes'),(4,1,2,'4',''),(5,2,2,'','Class is a template for creating, or instantiating, specific objects within'),(6,3,2,'','It is used as food');
 /*!40000 ALTER TABLE `user_response` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,9 +242,9 @@ DROP TABLE IF EXISTS `user_test`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_test` (
   `user_test_id` int(8) NOT NULL AUTO_INCREMENT,
-  `user_id` int(8) DEFAULT NULL,
-  `test_id` int(8) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `user_id` int(8) NOT NULL,
+  `test_id` int(8) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`user_test_id`),
   KEY `user_id` (`user_id`),
   KEY `test_id_idx` (`test_id`),
@@ -273,4 +272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-06 11:56:37
+-- Dump completed on 2016-07-06 13:50:22
