@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'accenture-bootcamp-test-system3'
+rootProject.name = 'accenture-bootcamp-test-system'
