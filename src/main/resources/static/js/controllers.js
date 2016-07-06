@@ -16,6 +16,22 @@ myapp.controller('LoginController',
 }).controller("EngilshController", function($scope, $routeParams) {
 	$scope.param = $routeParams.param;
 	$scope.message = "This is english test";
+}).controller ("json", function ($scope, $http){
+	//$scope.questions = [];
+    $http.get('js/test_questions.json').success(function(data) {
+    	
+        $scope.questions = data.test;
+        console.log($scope.questions[0].answer_test);
+    })
+    
+    
+
+    	
+
+    
+    
+    
+    
 }).controller('ErrorController', function($scope, $routeParams) {
 	$scope.code = $routeParams.code;
 	switch ($scope.code) {

@@ -1,7 +1,8 @@
 'use strict';
 
 var myapp = angular.module('myApp', [ 'ngResource', 'ngRoute', 'ngAnimate',
-		'http-auth-interceptor' ]);
+		'http-auth-interceptor' 
+]);
 
 myapp.constant('USER_ROLES', {
 	all : '*',
@@ -20,27 +21,28 @@ myapp.config(function($routeProvider, USER_ROLES) {
 		}
 	}).when("/applicant/english-test", {
 		templateUrl : "views/applicant/test_form.html",
-		controller : 'HomeController',
+		controller : 'json',
 		access : {
 			loginRequired : true,
 			authorizedRoles : [ USER_ROLES.applicant ]
 		}
 
 	}).when("/applicant/tehnical-test", {
-		templateUrl : 'test_form.html',
-		controller : 'TehnicalController',
+		templateUrl : 'views/applicant/test_form.html',
+		controller : 'json',
 		access : {
 			loginRequired : true,
 			authorizedRoles : [ USER_ROLES.applicant ]
 		}
 
 	}).when("/applicant/english-test", {
-		templateUrl : "test_form.html",
-		controller : 'EngilshController',
+		templateUrl : "views/applicant/test_form.html",
+		controller : 'json',
 		access : {
 			loginRequired : true,
 			authorizedRoles : [ USER_ROLES.applicant ]
 		}
+	
 	}).when("/grader", {
 		templateUrl : "views/grader/test.html",
 		controller : 'HomeController',
@@ -93,9 +95,12 @@ myapp.config(function($routeProvider, USER_ROLES) {
 	});
 });
 
-myapp
-		.run(function($rootScope, $location, $http, AuthSharedService, Session,
-				USER_ROLES, $q, $timeout) {
+
+
+
+
+myapp.run(function($rootScope, $location, $http, AuthSharedService, Session,
+				USER_ROLES, $q, $timeout, $anchorScroll, $routeParams) {
 			$rootScope
 					.$on(
 							'$routeChangeStart',
@@ -192,8 +197,15 @@ myapp
 				$location.path('/login').replace();
 				document.getElementById("navbar").className = "navbar navbar-inverse hidden-xs hidden-sm hidden-md hidden-lg";
 			});
+			
+			$rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+			    $location.hash($routeParams.scrollTo);
+			    $anchorScroll();  
+			  });
+			
 
 			// Get already authenticated user account
 			AuthSharedService.getAccount();
 
-		});
+		
+});
