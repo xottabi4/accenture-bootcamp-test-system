@@ -22,7 +22,7 @@ myapp.service('Session', function() {
 });
 
 myapp.service('AuthSharedService', function($rootScope, $http, $resource,
-    authService, Session) {
+    authService, Session, USER_ROLES) {
     return {
         login: function(email, password) {
             var config = {
@@ -56,14 +56,15 @@ myapp.service('AuthSharedService', function($rootScope, $http, $resource,
             }
             var isAuthorized = false;
             angular.forEach(authorizedRoles, function(authorizedRole) {
-                var authorized = (!!Session.email && Session.roles
-                    .indexOf(authorizedRole) !== -1);
+                var authorized = (!!Session.email &&
+                    Session.roles.indexOf(authorizedRole) !== -1);
                 if (authorized || authorizedRole == '*') {
                     isAuthorized = true;
                 }
             });
             return isAuthorized;
         },
+
         logout: function() {
             $rootScope.authenticationError = false;
             $rootScope.authenticated = false;
@@ -74,30 +75,3 @@ myapp.service('AuthSharedService', function($rootScope, $http, $resource,
         }
     };
 });
-
-// myapp.service('HomeService', function($log, $resource) {
-//     return {
-//         getName: function() {
-//             var userResource = $resource('resources/json/techno.json', {}, {
-//                 query: {
-//                     method: 'GET',
-//                     params: {},
-//                     isArray: true
-//                 }
-//             });
-//             return userResource.query();
-//         }
-//     }
-// });
-//
-//
-// myapp.service('UsersService', function ($log, $resource) {
-// return {
-// getAll: function () {
-// var userResource = $resource('users', {}, {
-// query: {method: 'GET', params: {}, isArray: true}
-// });
-// return userResource.query();
-// }
-// }
-// });

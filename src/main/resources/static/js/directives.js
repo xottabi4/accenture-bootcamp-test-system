@@ -4,14 +4,16 @@ myapp.directive('access', [
         return {
             restrict: 'A',
             link: function(scope, element, attrs) {
-                var roles = attrs.access.split(',');
-                if (roles.length > 0) {
-                    if (AuthSharedService.isAuthorized(roles)) {
-                        element.addClass('hide');
-                    } else {
-                    	element.removeClass('hide');
+                scope.$watch(function() {
+                    var roles = attrs.access.split(',');
+                    if (roles.length > 0) {
+                        if (AuthSharedService.isAuthorized(roles)) {
+                            element.removeClass('hide');
+                        } else {
+                            element.addClass('hide');
+                        }
                     }
-                }
+                })
             }
         };
     }
