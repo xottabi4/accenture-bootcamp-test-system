@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `onlinetestDB` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `onlinetestDB`;
+CREATE DATABASE  IF NOT EXISTS `accenture` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `accenture`;
 -- MySQL dump 10.13  Distrib 5.5.49, for debian-linux-gnu (x86_64)
 --
--- Host: 127.0.0.1    Database: onlinetestDB
+-- Host: 127.0.0.1    Database: accenture
 -- ------------------------------------------------------
 -- Server version	5.5.49-0+deb8u1
 -- Denchik
@@ -174,7 +174,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Adolf','Adolf','A@a.a','qwerty'),(2,'Ibragim','Ibragim','I@I.I','pass123'),(3,'Kazbek','Kazbekov','kazbek@k.k','priora228'),(4,'Mehmed','Mohammed','M@M.M','akbar15');
+INSERT INTO `user` VALUES (1,'Adolf','Adolf','a@a.a','a'),(2,'Ibragim','Ibragim','i@i.i','a'),(3,'Kazbek','Kazbekov','k@k.k','a'),(4,'Mehmed','Mohammed','m@m.m','a');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
