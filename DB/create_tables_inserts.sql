@@ -69,7 +69,7 @@ CREATE TABLE `question_option` (
 
 LOCK TABLES `question_option` WRITE;
 /*!40000 ALTER TABLE `question_option` DISABLE KEYS */;
-INSERT INTO `question_option` VALUES (7,1,'',0),(8,2,'Dog',1),(9,3,'',0),(10,1,'4',1),(11,2,'',0),(12,3,'',0);
+INSERT INTO `question_option` VALUES (7,1,'god',0),(8,2,'Dog',1),(9,3,'all day',0),(10,1,'4',1),(11,2,'Fish',0),(12,3,'fck you',0),(13,6,'AXXAXAXAXA',1);
 /*!40000 ALTER TABLE `question_option` ENABLE KEYS */;
 UNLOCK TABLES;
 
