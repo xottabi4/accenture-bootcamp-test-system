@@ -1,4 +1,18 @@
-
+<div data-ng-controller="TimerController">
+<section>
+        <div style="float:right;align=left" class="bs-docs-example" >
+            <h4>Time left for the test </h4>
+            <h4>
+                <timer end-time="newDate" max-time-unit="'minute'" interval="1000"> 
+                	{{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}</timer>
+            </h4>
+		<!--  <h4>
+		<button onclick="sessionStorage.clear()">Reset Time</button>
+		</h4>-->
+        </div>
+    </section>
+</div>
+	
 
 
 
