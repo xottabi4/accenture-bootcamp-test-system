@@ -25,14 +25,13 @@ DROP TABLE IF EXISTS `answer_text`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `answer_text` (
-  `at_id` int(11) NOT NULL AUTO_INCREMENT,
-  `test_id` int(8) DEFAULT NULL,
+  `at_id` int(8) NOT NULL AUTO_INCREMENT,
   `question_no` int(4) DEFAULT NULL COMMENT 'q number.',
   `answer_text` text COMMENT 'answer to question in text form.',
   PRIMARY KEY (`at_id`),
   KEY `qnofk2_idx` (`question_no`),
   CONSTRAINT `qnofk2` FOREIGN KEY (`question_no`) REFERENCES `questions` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +40,7 @@ CREATE TABLE `answer_text` (
 
 LOCK TABLES `answer_text` WRITE;
 /*!40000 ALTER TABLE `answer_text` DISABLE KEYS */;
-INSERT INTO `answer_text` VALUES (1,2,3,'aaa qqq bbb.');
+INSERT INTO `answer_text` VALUES (1,1,'Sunlight reaches Earth\'s atmosphere and is scattered in all directions by all the gases and particles in the air. Blue light is scattered in all directions by the tiny molecules of air in Earth\'s atmosphere. Blue is scattered more than other colors because it travels as shorter, smaller waves. This is why we see a blue sky most of the time.'),(2,2,NULL),(3,3,'Yes'),(4,1,NULL),(5,2,'class is an extensible program-code-template for creating objects'),(6,3,'Food, medicine');
 /*!40000 ALTER TABLE `answer_text` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,14 +53,13 @@ DROP TABLE IF EXISTS `question_option`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `question_option` (
   `qop_id` int(8) NOT NULL AUTO_INCREMENT,
-  `test_id` int(8) DEFAULT NULL,
   `question_no` int(4) DEFAULT NULL,
   `option_val` varchar(10) DEFAULT NULL,
   `is_answer` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`qop_id`),
   KEY `qnofk1_idx` (`question_no`),
   CONSTRAINT `qnofk1` FOREIGN KEY (`question_no`) REFERENCES `questions` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +68,7 @@ CREATE TABLE `question_option` (
 
 LOCK TABLES `question_option` WRITE;
 /*!40000 ALTER TABLE `question_option` DISABLE KEYS */;
-INSERT INTO `question_option` VALUES (1,1,1,'a',1),(2,2,1,'b',1),(3,1,2,'c',1),(4,2,2,'d',1),(5,1,3,'a',1),(6,2,3,NULL,0);
+INSERT INTO `question_option` VALUES (7,1,NULL,NULL),(8,2,'Dog',1),(9,3,NULL,NULL),(10,1,'4',1),(11,2,NULL,NULL),(12,3,NULL,NULL);
 /*!40000 ALTER TABLE `question_option` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +96,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,1,1,'che?'),(2,1,2,'weafegergergv?'),(3,2,1,'wewjesrjhesrjsra?'),(4,2,2,'wdjowqiofoihwe?'),(5,3,1,'wefuiue weuofuhweu weufwoe we wefiowef?'),(6,3,2,'wefoj jwe wepiof qwp[ k?');
+INSERT INTO `questions` VALUES (1,1,1,'Why is the sky blue?'),(2,2,1,'What is your favourite pet?'),(3,3,1,'Do you even lift?'),(4,1,2,'2+2?'),(5,2,2,'Write the definition of class'),(6,3,2,'Where NaCl is used?');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +111,7 @@ CREATE TABLE `roles` (
   `role_id` int(8) NOT NULL AUTO_INCREMENT,
   `role_type` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +120,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'applicant'),(2,'recruiter'),(3,'grader'),(4,'applicant');
+INSERT INTO `roles` VALUES (1,'grader'),(2,'recruiter'),(3,'applicant');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +146,7 @@ CREATE TABLE `test` (
 
 LOCK TABLES `test` WRITE;
 /*!40000 ALTER TABLE `test` DISABLE KEYS */;
-INSERT INTO `test` VALUES (1,'Language',60,1),(2,'Technical',60,1);
+INSERT INTO `test` VALUES (1,'Language',3600000,1),(2,'Technical',3600000,1);
 /*!40000 ALTER TABLE `test` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +173,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Gogi','Dag','d@d.d',''),(2,'Adolf','Petrov','a@a.a',''),(3,'Kazbek','Kazbekov','k@k.k',''),(4,'Ibragim','Q','I@i.i',NULL);
+INSERT INTO `user` VALUES (1,'Adolf','Adolf','A@a.a',NULL),(2,'Ibragim','Ibragim','I@I.I',NULL),(3,'Kazbek','Kazbekov','kazbek@k.k',NULL),(4,'Mehmed','Mohammed','M@M.M',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,14 +186,15 @@ DROP TABLE IF EXISTS `user_response`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_response` (
   `response_id` int(8) NOT NULL AUTO_INCREMENT,
+  `question_no` int(4) DEFAULT NULL,
   `test_id` int(8) DEFAULT NULL,
   `option_val` varchar(10) DEFAULT NULL,
   `answered_text` text,
   PRIMARY KEY (`response_id`),
-  KEY `testidfk0001_idx` (`test_id`),
-  CONSTRAINT `testfk0023` FOREIGN KEY (`test_id`) REFERENCES `answer_text` (`at_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `testidfk0001` FOREIGN KEY (`test_id`) REFERENCES `question_option` (`qop_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  KEY `question_numberfk_idx` (`question_no`),
+  CONSTRAINT `question_numberfk` FOREIGN KEY (`question_no`) REFERENCES `answer_text` (`question_no`) ON DELETE NO ACTION ON UPDATE SET NULL,
+  CONSTRAINT `question_numberfk2` FOREIGN KEY (`question_no`) REFERENCES `question_option` (`question_no`) ON DELETE NO ACTION ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,7 +203,7 @@ CREATE TABLE `user_response` (
 
 LOCK TABLES `user_response` WRITE;
 /*!40000 ALTER TABLE `user_response` DISABLE KEYS */;
-INSERT INTO `user_response` VALUES (1,1,'a',NULL),(2,1,'b',NULL),(3,1,'a',NULL),(4,1,'d',NULL),(5,1,'a',NULL),(6,1,'','');
+INSERT INTO `user_response` VALUES (1,1,1,'NULL','Blue light is shattered in all directions, like it goes through the prism'),(2,2,1,'Cat',''),(3,3,1,'NULL','Yes'),(4,1,2,'4',''),(5,2,2,'NULL','Class is a template for creating, or instantiating, specific objects within'),(6,3,2,'NULL','It is used as food');
 /*!40000 ALTER TABLE `user_response` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,8 +219,8 @@ CREATE TABLE `user_roles` (
   `role_id` int(8) NOT NULL,
   PRIMARY KEY (`user_id`,`role_id`),
   KEY `fkroleid_idx` (`role_id`),
-  CONSTRAINT `fkroleid` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fkuserid` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fkuserid` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fkroleid` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -231,7 +230,7 @@ CREATE TABLE `user_roles` (
 
 LOCK TABLES `user_roles` WRITE;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
-INSERT INTO `user_roles` VALUES (1,1),(2,2),(3,3),(4,4);
+INSERT INTO `user_roles` VALUES (3,1),(2,2),(1,3),(4,3);
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,16 +242,16 @@ DROP TABLE IF EXISTS `user_test`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_test` (
-  `uesr_test_id` int(8) NOT NULL AUTO_INCREMENT,
+  `user_test_id` int(8) NOT NULL AUTO_INCREMENT,
   `user_id` int(8) DEFAULT NULL,
   `test_id` int(8) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  PRIMARY KEY (`uesr_test_id`),
-  KEY `test_id_idx` (`test_id`),
+  PRIMARY KEY (`user_test_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `test_id` FOREIGN KEY (`test_id`) REFERENCES `user_response` (`response_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  KEY `test_id_idx` (`test_id`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `test_id` FOREIGN KEY (`test_id`) REFERENCES `user_response` (`response_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +260,7 @@ CREATE TABLE `user_test` (
 
 LOCK TABLES `user_test` WRITE;
 /*!40000 ALTER TABLE `user_test` DISABLE KEYS */;
-INSERT INTO `user_test` VALUES (5,1,1,'2016-12-11'),(6,1,1,'2016-12-11'),(7,4,2,'2016-12-11'),(8,4,2,'2016-12-11');
+INSERT INTO `user_test` VALUES (1,1,1,'2016-01-01'),(7,1,1,'2016-01-01'),(8,1,1,'2016-01-01'),(9,4,2,'2016-01-05'),(10,4,2,'2016-01-05'),(11,4,2,'2016-01-05');
 /*!40000 ALTER TABLE `user_test` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -274,4 +273,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-06  9:29:36
+-- Dump completed on 2016-07-06 11:56:37
