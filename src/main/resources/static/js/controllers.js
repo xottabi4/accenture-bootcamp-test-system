@@ -16,17 +16,36 @@ myapp.controller('LoginController',
 }).controller("EngilshController", function($scope, $routeParams) {
 	$scope.param = $routeParams.param;
 	$scope.message = "This is english test";
-}).controller ("json", function ($scope, $http){
-	//$scope.questions = [];
-    $http.get('js/test_questions.json').success(function(data) {
-    	
-        $scope.questions = data.test;
-        console.log($scope.questions[0].answer_test);
-    })
-    
-    
+	
+}).controller ("Engilsh_test_Controlle", function ($scope ,$http){
+	
+	$http.get('http://localhost:8080/applicant/get-questions',{params: {testType: 'Language'}}).success(function(data) {
 
-    	
+		$scope.questions = data.questions;
+		$scope.option=$scope.questions.option;
+		console.log($scope.questions.option );
+		
+	
+	})
+	
+	
+}).controller ("Tehnica_test_lController", function ($scope ,$http){
+	
+	$http.get('http://localhost:8080/applicant/get-questions',{params: {testType: 'Technical'}}).success(function(data) {
+
+		$scope.questions = data.questions;
+		$scope.option=$scope.questions.option;
+		console.log($scope.questions.option );
+		
+	
+	})
+//	var result= 
+		//questionsService.getquestions("Language");
+	//$scope.Languagequestions=Test.questions;
+	//console.log("       "+Test.questions);
+//	$scope.Technicalquestions=questionsService.myFunc("Technical");
+//    console.log($scope.Languagequestions);
+//    console.log($scope.Technicalquestions);
 
     
     
