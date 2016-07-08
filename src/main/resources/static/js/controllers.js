@@ -24,13 +24,7 @@ myapp.controller('LoginController',
         console.log($scope.questions[0].answer_test);
     })
     
-    
 
-    	
-
-    
-    
-    
     
 }).controller('ErrorController', function($scope, $routeParams) {
     $scope.code = $routeParams.code;
