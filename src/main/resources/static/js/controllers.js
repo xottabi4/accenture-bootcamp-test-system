@@ -84,10 +84,10 @@ myapp.controller('LoginController',
 	       	$scope.myDate = new Date();
 	       	$scope.newDate = $scope.myDate.getTime()+ $scope.testDurationLanguage;	
 		    sessionStorage.setItem("autosave", $scope.newDate);
-
+		}
 	})
 	
-   	}
+   	
 	$interval(callAtInterval, 5000);
   
 	function callAtInterval() {
