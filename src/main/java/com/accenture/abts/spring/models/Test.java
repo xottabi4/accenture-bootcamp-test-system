@@ -1,12 +1,15 @@
 package com.accenture.abts.spring.models;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,16 +33,25 @@ public class Test implements Serializable{
 
 	@Column(name = "is_alive")
 	private Boolean isAlive;
-
+	
+	@OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
+	private Set<UserTest> userTests;
+	
+	public Test(){
+		
+	}
+	public Test(String name, Long duration, Boolean isAlive) {
+		super();
+		this.name = name;
+		this.duration = duration;
+		this.isAlive = isAlive;
+	}
 	public Test(Long id, String name, Long duration, Boolean isAlive) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.duration = duration;
 		this.isAlive = isAlive;
-	}
-	public Test(){
-		
 	}
 	public Long getId() {
 		return id;
@@ -71,6 +83,12 @@ public class Test implements Serializable{
 
 	public void setIsAlive(Boolean isAlive) {
 		this.isAlive = isAlive;
+	}
+	public Set<UserTest> getUserTests() {
+		return userTests;
+	}
+	public void setUserTests(Set<UserTest> userTests) {
+		this.userTests = userTests;
 	}
 
 

@@ -67,6 +67,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/applicant/**").hasAnyAuthority("applicant")
                 .antMatchers("/grader/**").hasAnyAuthority("grader")
                 .antMatchers("/reviewer/**").hasAnyAuthority("reviewer")
+                .antMatchers("/admin/**").hasAnyAuthority("admin")
                 .anyRequest().authenticated()
                 .and()
             .exceptionHandling()

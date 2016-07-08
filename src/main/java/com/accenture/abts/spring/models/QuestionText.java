@@ -27,7 +27,7 @@ public class QuestionText implements Serializable {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "question_no")
+	@JoinColumn(name = "question_id")
 	private Question question;
 
 	@NotNull

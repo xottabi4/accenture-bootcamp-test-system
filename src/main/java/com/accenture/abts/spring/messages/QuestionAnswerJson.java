@@ -4,23 +4,25 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionJson implements Serializable {
+public class QuestionAnswerJson implements Serializable {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1130817324023504443L;
+	private static final long serialVersionUID = -4115843232250662720L;
 
 	private Long id;
-	private String questionText;
+	private String answer;
 	private List<String> options;
 
-	public QuestionJson(Long id, String questionText, List<String> options) {
+	public QuestionAnswerJson(Long id, String answer, List<String> options) {
 		super();
 		this.id = id;
-		this.questionText = questionText;
+		this.answer = answer;
 		this.options = options;
 	}
-
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -29,12 +31,12 @@ public class QuestionJson implements Serializable {
 		this.id = id;
 	}
 
-	public String getQuestionText() {
-		return questionText;
+	public String getAnswer() {
+		return answer;
 	}
 
-	public void setQuestionText(String questionText) {
-		this.questionText = questionText;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 
 	public List<String> getOptions() {
