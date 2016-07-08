@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "user_test")
 public class UserTest {
@@ -18,19 +20,26 @@ public class UserTest {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	@JsonManagedReference
 	private User user;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "test_id")
+	@JsonManagedReference
 	private Test test;
 
 	@NotNull
 	@Column(name = "date")
 	private String date;
 
-	
+	public UserTest() {
+		super();
+	}
+
 	public UserTest(User user, Test test, String date) {
 		super();
 		this.user = user;

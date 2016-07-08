@@ -1,7 +1,5 @@
 package com.accenture.abts.spring.configs;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -42,10 +40,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationFailureHandler restAuthenticationFailureHandler;
 
-
-	@Autowired
-	DataSource dataSource;
-	
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);

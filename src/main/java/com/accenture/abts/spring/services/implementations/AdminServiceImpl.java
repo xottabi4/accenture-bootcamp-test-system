@@ -29,9 +29,12 @@ public class AdminServiceImpl implements AdminService {
 	public void createUser(UserJson user) {
 		userDao.save(new User(user.getEmail(), user.getName(), user.getSurname(),
 				new HashSet<Role>(Arrays.asList(new Role(user.getRole())))));
-//		User test=userDao.findByEmail(user.getEmail());
-//		System.out.println(test.getEmail());
-//		System.out.println(test.getRoles());
+	}
+
+	@Override
+	public void createTest() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

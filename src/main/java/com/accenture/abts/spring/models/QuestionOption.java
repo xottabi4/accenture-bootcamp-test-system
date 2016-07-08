@@ -25,8 +25,9 @@ public class QuestionOption implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "question_no")
+	@JoinColumn(name = "question_id")
 	private Question question;
 
 	@NotNull

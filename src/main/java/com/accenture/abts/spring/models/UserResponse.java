@@ -26,10 +26,12 @@ public class UserResponse implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "question_id")
 	private Question question;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "test_id")
 	private UserTest userTest;
@@ -39,7 +41,7 @@ public class UserResponse implements Serializable {
 	private String optionVal;
 
 	@NotNull
-	@Column(name = "answered_text")
+	@Column(name = "answered_text", length=512)
 	private String answeredText;
 
 	public Long getId() {

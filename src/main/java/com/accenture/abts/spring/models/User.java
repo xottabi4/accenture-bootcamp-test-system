@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
@@ -48,13 +50,15 @@ public class User implements Serializable {
 	@Column(name = "security_code")
 	private String securityCode;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@NotNull
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name = "user_roles", joinColumns = {
 			@JoinColumn(name = "user_id", referencedColumnName = "user_id") }, inverseJoinColumns = {
 					@JoinColumn(name = "role_id", table = "roles", referencedColumnName = "role_id") })
 	private Set<Role> roles = new HashSet<Role>();
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+	@JsonBackReference
 	private Set<UserTest> userTests;
 
 	public User() {

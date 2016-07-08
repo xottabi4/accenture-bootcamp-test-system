@@ -15,20 +15,21 @@ import javax.validation.constraints.NotNull;
 public class Question {
 
 	@Id
-	@Column(name = "question_id")
+	@Column(name = "q_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@NotNull
-	@Column(name = "question_no")
+	@Column(name = "question_id")
 	private Long number;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "test_id")
 	private Test test;
 
 	@NotNull
-	@Column(name = "question_text")
+	@Column(name = "question_text", length=512)
 	private String text;
 
 	

@@ -19,19 +19,20 @@ public class QuestionText implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8339479888880767113L;
+	private static final long serialVersionUID = 7624226122828990042L;
 
 	@Id
 	@Column(name = "at_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "question_id")
 	private Question question;
 
 	@NotNull
-	@Column(name = "answer_text")
+	@Column(name = "answer_text", length=512)
 	private String text;
 
 	public Long getId() {
