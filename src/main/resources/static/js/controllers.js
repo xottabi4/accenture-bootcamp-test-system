@@ -72,10 +72,11 @@ myapp.controller('LoginController',
             $scope.code = 500;
             $scope.message = "Oops! unexpected error"
     }
-}).controller('TimerController', function($scope,$sessionStorage, $window, $location, $interval){
+}).controller('TimerControllerLanguageTest', function($scope,$sessionStorage, $window, $location, $interval,$http){
+	$http.get('http://localhost:8080/applicant/get-questions',{params: {testType: 'Language'}}).success(function(data) {
+		$scope.testDurationLanguage = data.duration;		
+	})
 	
-	$interval(callAtInterval, 5000);
-   // $scope.$watch('dateMilisec', function(){
 	if(sessionStorage.getItem("autosave")!=null){	//
 	   	$scope.dateMilisec = sessionStorage.getItem("autosave");		
 		$scope.newDate = new Date(+sessionStorage.getItem("autosave"));
@@ -83,17 +84,46 @@ myapp.controller('LoginController',
 
 	}
 	else{
-       	    $scope.myDate = new Date();
-	    $scope.newDate = $scope.myDate.getTime()+ 3600000;	
+		
+       	$scope.myDate = new Date();
+       	$scope.newDate = $scope.myDate.getTime()+ $scope.testDurationLanguage;	
 	    sessionStorage.setItem("autosave", $scope.newDate);
-	   // console.log(sessionStorage.getItem("autosave"));
+
    	}
-  //  });
+	$interval(callAtInterval, 5000);
+  
 	function callAtInterval() {
    	console.log("Interval occurred");
 	if (sessionStorage.getItem("autosave") < Date.now()){
 		$window.location.href = 'http://localhost:8080/#/applicant';
         }
-}
+	}
 
+}).controller('TimerControllerTechnicalTest', function($scope,$sessionStorage, $window, $location, $interval,$http){
+	
+	$http.get('http://localhost:8080/applicant/get-questions',{params: {testType: 'Technical'}}).success(function(data) {
+		$scope.testDurationTechnical = data.duration;
+	})
+	if(sessionStorage.getItem("autosave")!=null){	//
+	   	$scope.dateMilisec = sessionStorage.getItem("autosave");		
+		$scope.newDate = new Date(+sessionStorage.getItem("autosave"));
+		console.log(Date.now());
+
+	}
+	else{			
+       	$scope.myDate = new Date();
+       	$scope.newDate = $scope.myDate.getTime()+ $scope.testDurationTechnical;	
+	    sessionStorage.setItem("autosave", $scope.newDate);
+   	}
+	
+	$interval(callAtInterval, 5000);
+  
+	function callAtInterval() {
+   	console.log("Interval occurred");
+	if (sessionStorage.getItem("autosave") < Date.now()){
+		$window.location.href = 'http://localhost:8080/#/applicant';
+        }
+	}
+	
+	
 });
