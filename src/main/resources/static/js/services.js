@@ -75,3 +75,9 @@ myapp.service('AuthSharedService', function($rootScope, $http, $resource,
         }
     };
 });
+
+
+
+	    
+	
+

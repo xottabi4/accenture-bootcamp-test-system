@@ -21,14 +21,14 @@ myapp.config(function($routeProvider, USER_ROLES) {
         }
     }).when("/applicant/tehnical-test", {
         templateUrl: 'views/applicant/test_form.html',
-        controller: 'json',
+        controller: 'Tehnica_test_lController',
         access: {
             loginRequired: true,
             authorizedRoles: [USER_ROLES.applicant]
         }
     }).when("/applicant/english-test", {
         templateUrl: "views/applicant/test_form.html",
-        controller: 'json',
+        controller: 'Engilsh_test_Controlle',
         access: {
             loginRequired: true,
             authorizedRoles: [USER_ROLES.applicant]

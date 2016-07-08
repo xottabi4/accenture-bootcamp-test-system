@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div data-ng-controller="TimerController">
 <section>
         <div style="float:right;align=left" class="bs-docs-example" >
@@ -14,6 +15,10 @@
 </div>
 	
 
+=======
+
+<div class="row" ng-controller="Tehnica_test_lController">
+>>>>>>> debfceaab54a028bc3731cdd5d25fb0aa889aed0
 
 
 <div class="row">
@@ -24,7 +29,7 @@
 
 	<p>Your email: {{email}}</p>
 			 
-<div class="row" ng-controller="json">
+
 	
 	
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -32,12 +37,12 @@
 			<ul class="nav navbar-nav navbar-left nav-pills nav-stacked">
 				<div >
 					<div ng-repeat="i in questions">
-						<div ng-repeat="j in i.ouestions_content">
+						
 							<ul  style="list-style-type:none">
-								<li > <a onclick="scrollWin()"  href="#" > 	{{j.ouestions_no}} </a> </li>
+								<li > <a onclick="scrollWin()"  href="#" > 	{{i.id}} </a> </li>
 								<p> </P>
 							</ul>
-						</div>
+						
 					</div>
 				</div>
 			</ul>	
@@ -53,8 +58,28 @@ function scrollWin() {
 	
 
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		<div>
+		
 			<div ng-repeat="i in questions">
+				 <div>	{{i.id}} {{i.questionText}}  </div>
+					<div ng-if="i.option==null" >
+							<textarea class="form-control" rows="5" ng-hide="i.options.length"></textarea>
+					</div>
+					
+						<ul ng-repeat="k in i.options" > 
+								
+									<div class="input-group" >
+										<div> {{k}} </div>
+										<input type="checkbox">
+									</div>
+							
+						</ul>
+			           
+			</div>
+			
+			
+			
+			
+			          <!--
 				<div ng-repeat="j in i.ouestions_content">
 					<div id="j-{{$index}}" >
 					 	Questions nr {{j.ouestions_no}} {{j.ouestions_text}}
@@ -73,8 +98,10 @@ function scrollWin() {
 				</div>
 				
 			</div>
+		-->
 		</div>
-	</div>
+		
+	
 	
 		
 </div>
