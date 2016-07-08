@@ -28,7 +28,7 @@ myapp.config(function($routeProvider, USER_ROLES) {
         }
     }).when("/applicant/english-test", {
         templateUrl: "views/applicant/test_form.html",
-        controller: 'json',
+        controller: 'Engilsh_test_Controlle',
         access: {
             loginRequired: true,
             authorizedRoles: [USER_ROLES.applicant]
