@@ -38,6 +38,17 @@ public class QuestionOption implements Serializable {
 	@Column(name = "is_answer")
 	private Boolean answer;
 
+	public QuestionOption() {
+		super();
+	}
+
+	public QuestionOption(Question question, String optionVal, Boolean answer) {
+		super();
+		this.question = question;
+		this.optionVal = optionVal;
+		this.answer = answer;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -69,6 +80,5 @@ public class QuestionOption implements Serializable {
 	public void setAnswer(Boolean answer) {
 		this.answer = answer;
 	}
-
 
 }

@@ -29,10 +29,9 @@ public class Question {
 	private Test test;
 
 	@NotNull
-	@Column(name = "question_text", length=512)
+	@Column(name = "question_text", length = 512)
 	private String text;
 
-	
 	public Question() {
 		super();
 	}

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class QuestionJson implements Serializable {
 	/**
 	 * 
@@ -13,6 +16,7 @@ public class QuestionJson implements Serializable {
 	private Long id;
 	private String questionText;
 	private List<String> options;
+	private List<Boolean> answers;
 
 	public QuestionJson(Long id, String questionText, List<String> options) {
 		super();
@@ -47,6 +51,14 @@ public class QuestionJson implements Serializable {
 			newOptions.add(option);
 		}
 		this.options = newOptions;
+	}
+
+	public List<Boolean> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Boolean> answers) {
+		this.answers = answers;
 	}
 
 }

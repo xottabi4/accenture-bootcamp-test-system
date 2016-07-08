@@ -32,7 +32,7 @@ public class QuestionText implements Serializable {
 	private Question question;
 
 	@NotNull
-	@Column(name = "answer_text", length=512)
+	@Column(name = "answer_text", length = 512)
 	private String text;
 
 	public Long getId() {

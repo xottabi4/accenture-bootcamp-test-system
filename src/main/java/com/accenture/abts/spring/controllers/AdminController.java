@@ -28,4 +28,13 @@ public class AdminController {
 		}
 	}
 
+	@RequestMapping(value = "/create-test", method = RequestMethod.POST)
+	public @ResponseBody Response createTest(@RequestParam(value = "user") UserJson user) {
+		try {
+			adminService.createUser(user);
+			return new Response(201, "User created", null);
+		} catch (Exception e) {
+			return new Response(400, null, new Error(e.getStackTrace().toString(), e.getMessage()));
+		}
+	}
 }

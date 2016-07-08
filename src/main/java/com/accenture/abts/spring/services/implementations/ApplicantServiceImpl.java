@@ -50,7 +50,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 	@Override
 	public TestJson getTest(String testType) throws IncorectTestTypeException {
-		if (testType!="Language"||testType!="Technical") {
+		List<String> correctValues = new ArrayList<>();
+		correctValues.add("Language");
+		correctValues.add("Technical");
+		if (!correctValues.contains(testType)) {
 			throw new IncorectTestTypeException("test type parameter is incorrect");
 		}
 		Test test = testDao.findByNameAndIsAlive(testType, true);

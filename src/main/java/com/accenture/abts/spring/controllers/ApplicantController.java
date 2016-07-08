@@ -25,13 +25,6 @@ public class ApplicantController {
 	public @ResponseBody TestJson getTest(@RequestParam(value = "testType") String testType)
 			throws IncorectTestTypeException {
 		return applicantService.getTest(testType);
-		// try {
-		// return applicantService.getTest(testType);
-		// } catch (IncorectTestTypeException e) {
-		// return new Response(400, null, new Error("incorect parameter",
-		// e.getMessage()));
-		// // e.printStackTrace();
-		// }
 	}
 
 	@RequestMapping(value = "/save-answers", method = RequestMethod.POST)
