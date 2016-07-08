@@ -74,21 +74,19 @@ myapp.controller('LoginController',
     }
 }).controller('TimerControllerLanguageTest', function($scope,$sessionStorage, $window, $location, $interval,$http){
 	$http.get('http://localhost:8080/applicant/get-questions',{params: {testType: 'Language'}}).success(function(data) {
-		$scope.testDurationLanguage = data.duration;		
+		$scope.testDurationLanguage = data.duration;	
+		if(sessionStorage.getItem("autosave")!=null){	//
+		   	$scope.dateMilisec = sessionStorage.getItem("autosave");		
+			$scope.newDate = new Date(+sessionStorage.getItem("autosave"));
+		}
+		else{
+			
+	       	$scope.myDate = new Date();
+	       	$scope.newDate = $scope.myDate.getTime()+ $scope.testDurationLanguage;	
+		    sessionStorage.setItem("autosave", $scope.newDate);
+
 	})
 	
-	if(sessionStorage.getItem("autosave")!=null){	//
-	   	$scope.dateMilisec = sessionStorage.getItem("autosave");		
-		$scope.newDate = new Date(+sessionStorage.getItem("autosave"));
-		console.log(Date.now());
-
-	}
-	else{
-		
-       	$scope.myDate = new Date();
-       	$scope.newDate = $scope.myDate.getTime()+ $scope.testDurationLanguage;	
-	    sessionStorage.setItem("autosave", $scope.newDate);
-
    	}
 	$interval(callAtInterval, 5000);
   
@@ -103,18 +101,18 @@ myapp.controller('LoginController',
 	
 	$http.get('http://localhost:8080/applicant/get-questions',{params: {testType: 'Technical'}}).success(function(data) {
 		$scope.testDurationTechnical = data.duration;
-	})
-	if(sessionStorage.getItem("autosave")!=null){	//
-	   	$scope.dateMilisec = sessionStorage.getItem("autosave");		
-		$scope.newDate = new Date(+sessionStorage.getItem("autosave"));
-		console.log(Date.now());
+		if(sessionStorage.getItem("autosave")!=null){	//
+		   	$scope.dateMilisec = sessionStorage.getItem("autosave");		
+			$scope.newDate = new Date(+sessionStorage.getItem("autosave"))
 
-	}
-	else{			
-       	$scope.myDate = new Date();
-       	$scope.newDate = $scope.myDate.getTime()+ $scope.testDurationTechnical;	
-	    sessionStorage.setItem("autosave", $scope.newDate);
-   	}
+		}
+		else{			
+	       	$scope.myDate = new Date();
+	       	$scope.newDate = $scope.myDate.getTime()+ $scope.testDurationTechnical;	
+		    sessionStorage.setItem("autosave", $scope.newDate);
+	   	}
+	})
+
 	
 	$interval(callAtInterval, 5000);
   
