@@ -6,9 +6,12 @@ USE `onlinetestDB`;
 -- ------------------------------------------------------
 -- Server version	5.5.49-0+deb8u1
 
+/*=============================================================================================================*/;
+
 --Den
 --SET FOREIGN_KEY_CHECKS = 0
 
+/*=============================================================================================================*/;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +39,7 @@ CREATE TABLE `answer_text` (
   PRIMARY KEY (`at_id`),
   KEY `fk_question_id2_idx` (`question_id`),
   CONSTRAINT `fk_question_id2` FOREIGN KEY (`at_id`) REFERENCES `questions` (`q_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +48,7 @@ CREATE TABLE `answer_text` (
 
 LOCK TABLES `answer_text` WRITE;
 /*!40000 ALTER TABLE `answer_text` DISABLE KEYS */;
-INSERT INTO `answer_text` VALUES (7,1,1,'Sunlight reaches Earth\'s atmosphere and is scattered in all directions by all the gases and particles in the air. Blue light is scattered in all directions by the tiny molecules of air in Earth\'s atmosphere. Blue is scattered more than other colors because it travels as shorter, smaller waves. This is why we see a blue sky most of the time.'),(8,3,3,'Yes'),(9,5,2,'class is an extensible program-code-template for creating objects'),(10,6,3,'Food, medicine');
+INSERT INTO `answer_text` VALUES (7,1,1,'Sunlight reaches Earth\'s atmosphere and is scattered in all directions by all the gases and particles in the air. Blue light is scattered in all directions by the tiny molecules of air in Earth\'s atmosphere. Blue is scattered more than other colors because it travels as shorter, smaller waves. This is why we see a blue sky most of the time.'),(9,3,3,'Yes'),(11,5,2,'class is an extensible program-code-template for creating objects'),(12,6,3,'Food, medicine');
 /*!40000 ALTER TABLE `answer_text` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +63,7 @@ CREATE TABLE `question_option` (
   `qop_id` int(8) NOT NULL AUTO_INCREMENT,
   `question_id` int(8) NOT NULL,
   `question_no` int(4) NOT NULL,
-  `option_val` varchar(10) NOT NULL,
+  `option_val` varchar(100) NOT NULL,
   `is_answer` tinyint(1) NOT NULL,
   PRIMARY KEY (`qop_id`),
   KEY `question_no_fk_idx` (`question_no`),
@@ -282,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-08 10:15:39
+-- Dump completed on 2016-07-08 12:09:58
