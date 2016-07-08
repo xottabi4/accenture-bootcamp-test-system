@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-<div data-ng-controller="TimerController">
+
+<div ng-controller="TimerController">
 <section>
         <div style="float:right;align=left" class="bs-docs-example" >
-            <h4>()^_^()  top kek in: </h4>
+            <h4>Test time left: </h4>
             <h4>
                 <timer end-time="newDate" max-time-unit="'minute'" interval="1000"> 
                 	{{mminutes}} slower number{{minutesS}}, {{sseconds}} faster number{{secondsS}}</timer>
@@ -15,10 +15,10 @@
 </div>
 	
 
-=======
 
-<div class="row" ng-controller="Tehnica_test_lController">
->>>>>>> debfceaab54a028bc3731cdd5d25fb0aa889aed0
+
+<div class="row" data-ng-controller="Tehnica_test_lController">
+
 
 
 <div class="row">
@@ -35,16 +35,13 @@
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<nav class="navbar navbar-default navbar-fixed-left" role="navigation">
 			<ul class="nav navbar-nav navbar-left nav-pills nav-stacked">
-				<div >
 					<div ng-repeat="i in questions">
-						
 							<ul  style="list-style-type:none">
 								<li > <a onclick="scrollWin()"  href="#" > 	{{i.id}} </a> </li>
 								<p> </P>
 							</ul>
 						
 					</div>
-				</div>
 			</ul>	
 		</nav>
 	</div>

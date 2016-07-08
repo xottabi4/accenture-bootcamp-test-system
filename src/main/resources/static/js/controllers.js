@@ -16,7 +16,7 @@ myapp.controller('LoginController',
 }).controller("EngilshController", function($scope, $routeParams) {
 	$scope.param = $routeParams.param;
 	$scope.message = "This is english test";
-<<<<<<< HEAD
+
 }).controller ("json", function ($scope, $http){
 	//$scope.questions = [];
     $http.get('js/test_questions.json').success(function(data) {
@@ -25,7 +25,7 @@ myapp.controller('LoginController',
         console.log($scope.questions[0].answer_test);
     })
     
-=======
+
 	
 }).controller ("Engilsh_test_Controlle", function ($scope ,$http){
 	
@@ -56,7 +56,7 @@ myapp.controller('LoginController',
 //	$scope.Technicalquestions=questionsService.myFunc("Technical");
 //    console.log($scope.Languagequestions);
 //    console.log($scope.Technicalquestions);
->>>>>>> debfceaab54a028bc3731cdd5d25fb0aa889aed0
+
 
     
 }).controller('ErrorController', function($scope, $routeParams) {
@@ -83,7 +83,6 @@ myapp.controller('LoginController',
 
 	}
 	else{
-			$scope.setTestTime;
        	    $scope.myDate = new Date();
 	    $scope.newDate = $scope.myDate.getTime()+ 3600000;	
 	    sessionStorage.setItem("autosave", $scope.newDate);
