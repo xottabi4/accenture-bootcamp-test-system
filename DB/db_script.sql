@@ -1,15 +1,15 @@
-CREATE DATABASE  IF NOT EXISTS `accenture` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `accenture`;
+CREATE DATABASE  IF NOT EXISTS `onlinetestDB` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `onlinetestDB`;
 -- MySQL dump 10.13  Distrib 5.5.49, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: accenture
+-- Host: localhost    Database: onlinetestDB
 -- ------------------------------------------------------
 -- Server version	5.5.49-0+deb8u1
 
 /*=============================================================================================================*/;
 
-
-SET FOREIGN_KEY_CHECKS = 0
+--Den
+--SET FOREIGN_KEY_CHECKS = 0
 
 /*=============================================================================================================*/;
 
@@ -184,7 +184,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'A','A','a@a.a','a'),(2,'B','B','b@b.b','b'),(3,'C','D','c@c.c','c'),(4,'D','D','d@d.d','d');
+INSERT INTO `user` VALUES (1,'A','A','a','a'),(2,'B','B','b','b'),(3,'C','D','c','c'),(4,'D','D','d','d');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
