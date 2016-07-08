@@ -1,4 +1,3 @@
-
 CREATE DATABASE  IF NOT EXISTS `onlinetestDB` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `onlinetestDB`;
 -- MySQL dump 10.13  Distrib 5.5.49, for debian-linux-gnu (x86_64)
@@ -9,7 +8,6 @@ USE `onlinetestDB`;
 
 --Den
 --SET FOREIGN_KEY_CHECKS = 0
-
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -197,7 +195,6 @@ DROP TABLE IF EXISTS `user_response`;
 CREATE TABLE `user_response` (
   `user_response_id` int(8) NOT NULL AUTO_INCREMENT,
   `question_id` int(8) NOT NULL,
-  `user_id` int(8) NOT NULL,
   `test_id` int(8) NOT NULL,
   `option_val` varchar(100) NOT NULL,
   `answered_text` text NOT NULL,
@@ -216,7 +213,7 @@ CREATE TABLE `user_response` (
 
 LOCK TABLES `user_response` WRITE;
 /*!40000 ALTER TABLE `user_response` DISABLE KEYS */;
-INSERT INTO `user_response` VALUES (7,1,1,1,'text answer','Blue light is shattered in all directions, like it goes through the prism'),(8,8,1,1,'Cat','selected option'),(9,3,1,1,'text answer','Yes'),(10,10,4,2,'4','selected option'),(11,5,4,2,'text answer','Class is a template for creating, or instantiating, specific objects within'),(12,6,4,2,'text answer','It is used as food');
+INSERT INTO `user_response` VALUES (7,1,1,'text answer','Blue light is shattered in all directions, like it goes through the prism'),(8,8,1,'Cat','selected option'),(9,3,1,'text answer','Yes'),(10,10,2,'4','selected option'),(11,5,2,'text answer','Class is a template for creating, or instantiating, specific objects within'),(12,6,2,'text answer','It is used as food');
 /*!40000 ALTER TABLE `user_response` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-08  9:46:55
+-- Dump completed on 2016-07-08 10:15:39
