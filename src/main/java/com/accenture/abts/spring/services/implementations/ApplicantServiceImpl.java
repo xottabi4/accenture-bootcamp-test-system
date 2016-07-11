@@ -22,7 +22,7 @@ import com.accenture.abts.spring.messages.TestJson;
 import com.accenture.abts.spring.models.Question;
 import com.accenture.abts.spring.models.QuestionOption;
 import com.accenture.abts.spring.models.Test;
-import com.accenture.abts.spring.models.UserTestResponse;
+import com.accenture.abts.spring.models.UserResponse;
 import com.accenture.abts.spring.models.UserTest;
 import com.accenture.abts.spring.services.ApplicantService;
 
@@ -84,10 +84,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 		UserTest userTest = new UserTest(userDao.findByEmail(testAnswer.getUserEmail()),
 				testDao.findByNameAndIsAlive(testAnswer.getTestName(), true), testAnswer.getDate());
 		UserTest newUserTest = userTestDao.save(userTest);
-		UserTestResponse userResponse;
+		UserResponse userResponse;
 		for (QuestionAnswerJson questionAnswer : testAnswer.getQuestionsText()) {
 			if ((questionAnswer.getOptions() == null) || (questionAnswer.getOptions().size() < 1)) {
-				userResponse = new UserTestResponse();
+				userResponse = new UserResponse();
 				userResponse.setQuestion(questionDao.findOne(questionAnswer.getId()));
 				userResponse.setUserTest(newUserTest);
 				userResponse.setAnsweredText(questionAnswer.getAnswer());
@@ -95,7 +95,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 				userResponseDao.save(userResponse);
 			} else {
 				for (String option : questionAnswer.getOptions()) {
-					userResponse = new UserTestResponse();
+					userResponse = new UserResponse();
 					userResponse.setQuestion(questionDao.findOne(questionAnswer.getId()));
 					userResponse.setUserTest(newUserTest);
 					userResponse.setAnsweredText(null);

@@ -1,7 +1,5 @@
 package com.accenture.abts.spring.services.implementations;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +19,6 @@ import com.accenture.abts.spring.dao.UserResponseDao;
 import com.accenture.abts.spring.dao.UserTestDao;
 import com.accenture.abts.spring.messages.QuestionAnswerJson;
 import com.accenture.abts.spring.messages.TestAnswerJson;
-import com.accenture.abts.spring.models.User;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ApplicantServiceImplTest {

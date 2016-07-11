@@ -17,8 +17,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 @Entity
 @Table(name = "user_response")
-@Qualifier("UserTestResponse")
-public class UserTestResponse implements Serializable {
+public class UserResponse implements Serializable {
 
 	/**
 	 * 
@@ -48,7 +47,7 @@ public class UserTestResponse implements Serializable {
 	@Column(name = "answered_text", length = 512)
 	private String answeredText;
 
-	public UserTestResponse() {
+	public UserResponse() {
 		super();
 	}
 

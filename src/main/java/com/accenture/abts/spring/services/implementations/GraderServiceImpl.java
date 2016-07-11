@@ -6,20 +6,19 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.accenture.abts.spring.dao.QuestionDao;
 import com.accenture.abts.spring.dao.QuestionOptionDao;
 import com.accenture.abts.spring.dao.QuestionTextDao;
 import com.accenture.abts.spring.dao.TestDao;
+import com.accenture.abts.spring.dao.UserResponseDao;
 import com.accenture.abts.spring.exceptions.IncorectTestTypeException;
 import com.accenture.abts.spring.messages.QuestionJson;
 import com.accenture.abts.spring.messages.TestAnswerJson;
 import com.accenture.abts.spring.models.Question;
 import com.accenture.abts.spring.models.QuestionOption;
 import com.accenture.abts.spring.models.Test;
-import com.accenture.abts.spring.models.UserTestResponse;
 import com.accenture.abts.spring.services.GraderService;
 
 @Service
@@ -38,10 +37,8 @@ public class GraderServiceImpl implements GraderService {
 	@Autowired
 	private QuestionOptionDao questionOptionDao;
 
-//	Why it throws error
-//	@Autowired
-//	@Qualifier("UserTestResponse")
-//	private UserTestResponse userTestResponse;
+	@Autowired
+	private UserResponseDao userResponseDao;
 
 	@Override
 	public TestAnswerJson viewTest(String testType) throws IncorectTestTypeException {
