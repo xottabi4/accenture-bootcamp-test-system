@@ -9,7 +9,7 @@ myapp.controller('LoginController', function($rootScope, $scope, AuthSharedServi
     AuthSharedService.logout();
 }).controller('HomeController', function($scope, Session) {
     $scope.email = Session.email;
-<<<<<<< HEAD
+
 
 	
 }).controller ("Engilsh_test_Controlle", function ($scope, $sessionStorage, $window, $location, $interval, $http){
@@ -107,7 +107,7 @@ myapp.controller('LoginController', function($rootScope, $scope, AuthSharedServi
 	})	       
 
 
-=======
+
 }).controller("RecruiterController", function($scope, Session) {
     $scope.email = Session.email;
 }).controller("GraderController", function($scope, Session) {
@@ -194,7 +194,7 @@ myapp.controller('LoginController', function($rootScope, $scope, AuthSharedServi
                 }) //.success().error();
         })
     })
->>>>>>> 9493ef0bed034187a4c8abbb1ca9b980d5532733
+
 }).controller('ErrorController', function($scope, $routeParams) {
     $scope.code = $routeParams.code;
     switch ($scope.code) {
