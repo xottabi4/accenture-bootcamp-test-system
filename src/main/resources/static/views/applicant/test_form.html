@@ -1,87 +1,84 @@
-
-<<<<<<< HEAD
 <div class="row">
-=======
-<div ng-controller="TimerControllerTechnicalTest">
-<section>
-        <div style="float:right;align=left" class="bs-docs-example" >
-            <h4>Test time left: </h4>
-            <h4>
-                <timer end-time="newDate" max-time-unit="'minute'" interval="1000"> 
+    <div ng-controller="TimerControllerTechnicalTest">
+        <section>
+            <div style="float:right;align=left" class="bs-docs-example">
+                <h4>Test time left: </h4>
+                <h4>
+                <timer end-time="newDate" max-time-unit="'minute'" interval="1000">
                 	{{mminutes}} slower number{{minutesS}}, {{sseconds}} faster number{{secondsS}}</timer>
             </h4>
-		 <h4>
+                <h4>
 		  <button onclick="sessionStorage.clear()">Reset Time</button>
 		</h4>
-        </div>
-    </section>
+            </div>
+        </section>
+    </div>
 </div>
-	
 
 
 
 <div class="row" data-ng-controller="Tehnica_test_lController">
 
->>>>>>> 80b9701524f54f2a592802abc0b5e5b09e68ea4a
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h1> Please choose test </h1>
+        </div>
+    </div>
+
+    <p>Your email: {{email}}</p>
 
 
-<div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		<h1> Please choose test </h1>
-	</div>
-</div>
 
-	<p>Your email: {{email}}</p>
-			 
 
-	
-	
-	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		<nav class="navbar navbar-default navbar-fixed-left" role="navigation">
-			<ul class="nav navbar-nav navbar-left nav-pills nav-stacked">
-					<div ng-repeat="i in questions">
-							<ul  style="list-style-type:none">
-								<li > <a onclick="scrollWin()"  href="#" > 	{{i.id}} </a> </li>
-								<p> </P>
-							</ul>
-						
-					</div>
-			</ul>	
-		</nav>
-	</div>
-			
-			
-<script>
-function scrollWin() {
-    window.scrollTo(0, 5000);
-}
-</script>
-	
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <nav class="navbar navbar-default navbar-fixed-left" role="navigation">
+            <ul class="nav navbar-nav navbar-left nav-pills nav-stacked">
+                <div ng-repeat="i in questions">
+                    <ul style="list-style-type:none">
+                        <li> <a onclick="scrollWin()" href="#"> 	{{i.id}} </a> </li>
+                        <p>
+                        </P>
+                    </ul>
 
-	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-		
-			<div ng-repeat="i in questions">
-				 <div >	{{i.id}} {{i.questionText}}  </div>
-					<div ng-if="i.option==null" >
-							<textarea class="form-control" rows="5" ng-hide="i.options.length" id="i-{{$index}}"></textarea>
-							
-					</div>
-					
-						<ul ng-repeat="k in i.options" > 
-								
-									<div class="input-group checkbox" >
-										<div>  <input type="checkbox" id="c-{{$index}}"> {{k}} </div>
-										
-									</div>
-							
-						</ul>
-			           
-			</div>
-			
-			
-			
-			
-			          <!--
+                </div>
+            </ul>
+        </nav>
+    </div>
+
+
+    <script>
+        function scrollWin() {
+            window.scrollTo(0, 5000);
+        }
+    </script>
+
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+        <div ng-repeat="i in questions">
+            <div> {{i.id}} {{i.questionText}} </div>
+            <div ng-if="i.option==null">
+                <textarea class="form-control" rows="5" ng-hide="i.options.length" id="i-{{$index}}"></textarea>
+
+            </div>
+
+            <ul ng-repeat="k in i.options">
+
+                <div class="input-group checkbox">
+                    <div>
+                        <input type="checkbox" id="c-{{$index}}"> {{k}} </div>
+
+                </div>
+
+            </ul>
+
+        </div>
+
+
+
+
+        <!--
 				<div ng-repeat="j in i.ouestions_content">
 					<div id="j-{{$index}}" >
 					 	Questions nr {{j.ouestions_no}} {{j.ouestions_text}}
@@ -89,22 +86,22 @@ function scrollWin() {
 						<div ng-if="j.option.length==0" >
 							<textarea class="form-control" rows="5"></textarea>
 						</div>
-							<ul ng-repeat="k in j.option" > 
-							
+							<ul ng-repeat="k in j.option" >
+
 								<div class="input-group">
-									{{k}} 
+									{{k}}
 									<input type="checkbox">
 								</div>
-						
+
 							</ul>
 				</div>
-				
+
 			</div>
 		-->
-		</div>
-		
-		<button type="button" class="btn btn-success" id="getAnswers" ng-controller="getAnswers">Sava answers</button>
-	
-	
-		
+    </div>
+
+    <button type="button" class="btn btn-success" id="getAnswers" ng-controller="getAnswers">Sava answers</button>
+
+
+
 </div>

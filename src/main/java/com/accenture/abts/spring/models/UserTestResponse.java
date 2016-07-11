@@ -13,13 +13,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+
 @Entity
 @Table(name = "user_response")
-public class UserResponse implements Serializable {
+@Qualifier("UserTestResponse")
+public class UserTestResponse implements Serializable {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6321249853809905735L;
+	private static final long serialVersionUID = -7695511857742795820L;
 
 	@Id
 	@Column(name = "user_response_id")
@@ -41,8 +45,12 @@ public class UserResponse implements Serializable {
 	private String optionVal;
 
 	@NotNull
-	@Column(name = "answered_text", length=512)
+	@Column(name = "answered_text", length = 512)
 	private String answeredText;
+
+	public UserTestResponse() {
+		super();
+	}
 
 	public Long getId() {
 		return id;

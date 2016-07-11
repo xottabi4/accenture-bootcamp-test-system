@@ -1,5 +1,6 @@
 package com.accenture.abts.spring.services.implementations;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -29,22 +30,29 @@ import com.accenture.abts.spring.services.AdminService;
 public class AdminServiceImpl implements AdminService {
 
 	@Autowired
-	UserDao userDao;
+	private UserDao userDao;
 
 	@Autowired
-	RoleDao roleDao;
+	private RoleDao roleDao;
 
 	@Autowired
-	TestDao testDao;
+	private TestDao testDao;
 
 	@Autowired
-	QuestionDao questionDao;
+	private QuestionDao questionDao;
 
 	@Autowired
-	QuestionOptionDao questionOptionDao;
+	private QuestionOptionDao questionOptionDao;
 
 	@Override
 	public void createUser(UserJson user) {
+		Iterable<Role> rolesIter = roleDao.findAll();
+		List<Role> roles = new ArrayList<>();
+		rolesIter.forEach(roles::add);
+		if (!roles.contains(user.getRole())) {
+			// throw role doesnt exist
+		}
+
 		userDao.save(new User(user.getEmail(), user.getName(), user.getSurname(),
 				new HashSet<Role>(Arrays.asList(new Role(user.getRole())))));
 	}
@@ -65,9 +73,19 @@ public class AdminServiceImpl implements AdminService {
 					questionOptionDao.save(questionOption);
 				}
 			}
-
 		}
+	}
 
+	@Override
+	public void makeTestAlive(Long testId) {
+		Test test = testDao.findOne(testId);
+		test.setIsAlive(true);
+	}
+
+	@Override
+	public void makeTestDead(Long testId) {
+		Test test = testDao.findOne(testId);
+		test.setIsAlive(false);
 	}
 
 }

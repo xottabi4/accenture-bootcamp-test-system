@@ -37,4 +37,24 @@ public class AdminController {
 			return new Response(400, null, new Error(e.getStackTrace().toString(), e.getMessage()));
 		}
 	}
+
+	@RequestMapping(value = "/make-test-alive", method = RequestMethod.POST)
+	public @ResponseBody Response makeTestAlive(@RequestParam(value = "testId") Long testId) {
+		try {
+			adminService.makeTestAlive(testId);
+			return new Response(201, "Test made alive", null);
+		} catch (Exception e) {
+			return new Response(400, null, new Error(e.getStackTrace().toString(), e.getMessage()));
+		}
+	}
+
+	@RequestMapping(value = "/make-test-dead", method = RequestMethod.POST)
+	public @ResponseBody Response makeTestDead(@RequestParam(value = "testId") Long testId) {
+		try {
+			adminService.makeTestDead(testId);
+			return new Response(201, "Test made dead", null);
+		} catch (Exception e) {
+			return new Response(400, null, new Error(e.getStackTrace().toString(), e.getMessage()));
+		}
+	}
 }

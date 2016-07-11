@@ -1,7 +1,8 @@
 package com.accenture.abts.spring.services;
 
-import com.accenture.abts.spring.messages.TestJson;
+import com.accenture.abts.spring.exceptions.IncorectTestTypeException;
+import com.accenture.abts.spring.messages.TestAnswerJson;
 
 public interface GraderService {
-	public void createTest(TestJson test);
+	public TestAnswerJson viewTest(String testType) throws IncorectTestTypeException ;
 }
