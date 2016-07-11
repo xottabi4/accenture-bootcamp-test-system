@@ -1,4 +1,34 @@
+<<<<<<< HEAD
 <div class="row">
+=======
+<!-- <div class="row">
+    <div ng-controller="TimerControllerTechnicalTest">
+        <section>
+            <div style="float:right;align=left" class="bs-docs-example">
+                <h4>Test time left: </h4>
+                <h4>
+                <timer end-time="newDate" max-time-unit="'minute'" interval="1000">
+                	{{mminutes}} slower number{{minutesS}}, {{sseconds}} faster number{{secondsS}}</timer>
+            </h4>
+                <h4>
+		  <button onclick="sessionStorage.clear()">Reset Time</button>
+		</h4>
+            </div>
+        </section>
+    </div>
+</div> -->
+
+
+
+<div class="row" data-ng-controller="Tehnica_test_lController">
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h1> Please fill test </h1>
+        </div>
+    </div>
+>>>>>>> 9493ef0bed034187a4c8abbb1ca9b980d5532733
 
     <!--
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -21,6 +51,7 @@
 	</div>
 		
 
+<<<<<<< HEAD
 -->
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<h1> Please choose test </h1>
@@ -66,6 +97,56 @@
 			</div>
 	</div>
 		<!--	       
+=======
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <nav class="navbar navbar-default navbar-fixed-left" role="navigation">
+            <ul class="nav navbar-nav navbar-left nav-pills nav-stacked">
+                <div ng-repeat="i in questions">
+                    <ul style="list-style-type:none">
+                        <li> <a onclick="scrollWin()" href="#"> 	{{i.id}} </a> </li>
+                        <p>
+                        </P>
+                    </ul>
+
+                </div>
+            </ul>
+        </nav>
+    </div>
+
+
+    <script>
+        function scrollWin() {
+            window.scrollTo(0, 5000);
+        }
+    </script>
+
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+        <div ng-repeat="i in questions">
+            <div> {{i.id}} {{i.questionText}} </div>
+            <div ng-if="i.option==null">
+                <textarea class="form-control" rows="5" ng-hide="i.options.length" id="i-{{$index}}"></textarea>
+
+            </div>
+
+            <ul ng-repeat="k in i.options">
+
+                <div class="input-group checkbox">
+                    <div>
+                        <input type="checkbox" id="c-{{$index}}"> {{k}} </div>
+
+                </div>
+
+            </ul>
+
+        </div>
+
+
+
+
+        <!--
+>>>>>>> 9493ef0bed034187a4c8abbb1ca9b980d5532733
 				<div ng-repeat="j in i.ouestions_content">
 					<div id="j-{{$index}}" >
 					 	Questions nr {{j.ouestions_no}} {{j.ouestions_text}}
@@ -73,19 +154,28 @@
 						<div ng-if="j.option.length==0" >
 							<textarea class="form-control" rows="5"></textarea>
 						</div>
-							<ul ng-repeat="k in j.option" > 
-							
+							<ul ng-repeat="k in j.option" >
+
 								<div class="input-group">
-									{{k}} 
+									{{k}}
 									<input type="checkbox">
 								</div>
-						
+
 							</ul>
 				</div>
-				
+
 			</div>
 		-->
+<<<<<<< HEAD
 		
 		<button type="button" class="btn btn-success" id="getAnswers" ng-controller="getAnswers">Sava answers</button>
 			
+=======
+    </div>
+
+    <button type="button" class="btn btn-success" id="getAnswers" ng-controller="getAnswers">Sava answers</button>
+
+
+
+>>>>>>> 9493ef0bed034187a4c8abbb1ca9b980d5532733
 </div>

@@ -44,6 +44,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-jdbc")
 	runtime("mysql:mysql-connector-java")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.+"
     

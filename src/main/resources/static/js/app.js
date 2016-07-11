@@ -124,7 +124,7 @@ myapp.run(function($rootScope, $location, $http, AuthSharedService, Session,
         document.getElementById("navbar").className =
             document.getElementById("navbar").className.replace(/(?:^|\s)hide(?!\S)/g, '');
         var nextLocation = ($rootScope.requestedUrl ? $rootScope.requestedUrl : "/");
-        var delay = ($location.path() === "/loading" ? 1500 : 0);
+        var delay = ($location.path() === "/loading" ? 750 : 0);
 
         $timeout(function() {
             Session.create(data);

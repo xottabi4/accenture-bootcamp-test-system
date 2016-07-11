@@ -2,8 +2,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 -- users and roles inserts
 INSERT INTO roles(role_type) VALUES ('grader'), ('applicant'), ('recruiter');
-INSERT INTO user(name,surname,email,security_code) VALUES ('name','surname','g@g.g','a'), ('name','surname','r@r.r','a'), ('name','surname','a@a.a','a');
-INSERT INTO user_roles(user_id,role_id) VALUES ((SELECT user_id from user WHERE email='a@a.a'),2),((SELECT user_id from user WHERE email='g@g.g'),1),((SELECT user_id from user WHERE email='r@r.r'),3);
+INSERT INTO user(name,surname,email,security_code) VALUES ('name','surname','g@g.g','a'), ('name','surname','r@r.r','a'), ('name','surname','a@a.a','a'), ('name','surname','a2@a.a','a');
+INSERT INTO user_roles(user_id,role_id) VALUES ((SELECT user_id from user WHERE email='a@a.a'),2),((SELECT user_id from user WHERE email='g@g.g'),1),((SELECT user_id from user WHERE email='r@r.r'),3), ((SELECT user_id from user WHERE email='a2@a.a'),2);
 
 -- question inserts
 INSERT INTO `answer_text` (`at_id`,`question_id`,`answer_text`) VALUES (7,1,'Sunlight reaches Earth\'s atmosphere and is scattered in all directions by all the gases and particles in the air. Blue light is scattered in all directions by the tiny molecules of air in Earth\'s atmosphere. Blue is scattered more than other colors because it travels as shorter, smaller waves. This is why we see a blue sky most of the time.');
@@ -31,9 +31,9 @@ INSERT INTO `user_response` (`user_response_id`,`question_id`,`test_id`,`option_
 INSERT INTO `user_response` (`user_response_id`,`question_id`,`test_id`,`option_val`,`answered_text`) VALUES (11,5,2,'text answer','Class is a template for creating, or instantiating, specific objects within');
 INSERT INTO `user_response` (`user_response_id`,`question_id`,`test_id`,`option_val`,`answered_text`) VALUES (12,6,2,'text answer','It is used as food');
 
-INSERT INTO `user_test` (`user_test_id`,`user_id`,`test_id`,`date`) VALUES (1,1,1,'2016-01-01');
-INSERT INTO `user_test` (`user_test_id`,`user_id`,`test_id`,`date`) VALUES (7,1,1,'2016-01-01');
-INSERT INTO `user_test` (`user_test_id`,`user_id`,`test_id`,`date`) VALUES (8,1,1,'2016-01-01');
+INSERT INTO `user_test` (`user_test_id`,`user_id`,`test_id`,`date`) VALUES (1,3,1,'2016-01-01');
+INSERT INTO `user_test` (`user_test_id`,`user_id`,`test_id`,`date`) VALUES (7,3,1,'2016-01-01');
+INSERT INTO `user_test` (`user_test_id`,`user_id`,`test_id`,`date`) VALUES (8,3,1,'2016-01-01');
 INSERT INTO `user_test` (`user_test_id`,`user_id`,`test_id`,`date`) VALUES (9,4,2,'2016-01-05');
 INSERT INTO `user_test` (`user_test_id`,`user_id`,`test_id`,`date`) VALUES (10,4,2,'2016-01-05');
 INSERT INTO `user_test` (`user_test_id`,`user_id`,`test_id`,`date`) VALUES (11,4,2,'2016-01-05');

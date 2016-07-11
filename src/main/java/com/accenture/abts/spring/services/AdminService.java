@@ -7,4 +7,8 @@ public interface AdminService {
 	public void createUser(UserJson user);
 
 	public void createTest(TestJson test);
+	
+	public void makeTestAlive(Long testId);
+	
+	public void makeTestDead(Long testId);
 }
