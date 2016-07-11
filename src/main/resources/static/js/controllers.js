@@ -29,16 +29,80 @@ myapp.controller('LoginController',
 	})
 	
 	
-}).controller ("Tehnica_test_lController", function ($scope ,$http){
+}).controller("Tehnica_test_lController", function ($scope ,$http){
 	
 	$http.get('http://localhost:8080/applicant/get-questions',{params: {testType: 'Technical'}}).success(function(data) {
 
 		$scope.questions = data.questions;
 		$scope.option=$scope.questions.option;
-		console.log($scope.questions.option );
+		//console.log($scope.questions.option);
 		
 	
 	})
+	
+	
+}).controller('getAnswers',function ($scope ,$http){
+	
+	
+	$("#getAnswers").click(function() {
+		var Answers={};
+		$("textarea").each(function( index ){
+			
+			//console.log($( this ).val() );
+			
+			var answertext=$( this ).val();
+			var answerID=index+1;
+			var optionChecked=[];
+			
+			//var Answers1={"answers":[{"id":answerID ,"Answertext": answertext, "optionChecked":optionChecked}]};
+			//console.log(Answers1);
+			
+			var checkID;
+			
+			$("input").each(function( index ){
+				
+						//console.log($( this ).val() );
+						
+						checkID='c-' + index;
+						var checked=document.getElementById(checkID);
+						if (checked.checked){
+							optionChecked[index]=index+1;
+							//alert("checked") ;
+						}
+						else{
+							alert("You didn't check it!");
+						}
+						console.log(checkID);
+						
+						var answers=[];
+						answers[index]={"id":answerID ,"Answertext": answertext, "optionChecked":optionChecked};
+						
+						Answers={"answers":answers};
+						console.log(Answers);
+								
+			})
+			$http({
+                url: "http://localhost:8080/applicant/get-Answers",
+                method: 'POST',
+                params: {testType: 'Technical'},
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                    /*'Accept': 'text/json'*/}
+            })//.success().error();
+
+			
+			
+			
+		})
+		
+		
+			
+	})
+		
+	
+	
+	
+
 //	var result= 
 		//questionsService.getquestions("Language");
 	//$scope.Languagequestions=Test.questions;

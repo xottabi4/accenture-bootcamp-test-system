@@ -1,5 +1,5 @@
 
-<div class="row" ng-controller="Tehnica_test_lController">
+<div class="row">
 
 
 <div class="row">
@@ -41,16 +41,17 @@ function scrollWin() {
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		
 			<div ng-repeat="i in questions">
-				 <div>	{{i.id}} {{i.questionText}}  </div>
+				 <div >	{{i.id}} {{i.questionText}}  </div>
 					<div ng-if="i.option==null" >
-							<textarea class="form-control" rows="5" ng-hide="i.options.length"></textarea>
+							<textarea class="form-control" rows="5" ng-hide="i.options.length" id="i-{{$index}}"></textarea>
+							
 					</div>
 					
 						<ul ng-repeat="k in i.options" > 
 								
-									<div class="input-group" >
-										<div> {{k}} </div>
-										<input type="checkbox">
+									<div class="input-group checkbox" >
+										<div>  <input type="checkbox" id="c-{{$index}}"> {{k}} </div>
+										
 									</div>
 							
 						</ul>
@@ -82,6 +83,7 @@ function scrollWin() {
 		-->
 		</div>
 		
+		<button type="button" class="btn btn-success" id="getAnswers" ng-controller="getAnswers">Sava answers</button>
 	
 	
 		
