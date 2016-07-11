@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,12 +14,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "user")
-public class User implements Serializable{
+public class User implements Serializable {
 
 	/**
 	 * 
@@ -37,19 +41,25 @@ public class User implements Serializable{
 	@NotNull
 	@Column(name = "name")
 	private String name;
-	
+
 	@NotNull
 	@Column(name = "surname")
 	private String surname;
-	
+
 	@NotNull
 	@Column(name = "security_code")
 	private String securityCode;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id", table = "roles", referencedColumnName = "role_id") })
+	@NotNull
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name = "user_roles", joinColumns = {
+			@JoinColumn(name = "user_id", referencedColumnName = "user_id") }, inverseJoinColumns = {
+					@JoinColumn(name = "role_id", table = "roles", referencedColumnName = "role_id") })
 	private Set<Role> roles = new HashSet<Role>();
-	
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+	@JsonBackReference
+	private Set<UserTest> userTests;
 
 	public User() {
 	}
@@ -57,11 +67,18 @@ public class User implements Serializable{
 	public User(Long user_id) {
 		this.id = user_id;
 	}
-	
 
 	public User(String email, String name) {
 		this.email = email;
 		this.name = name;
+	}
+
+	public User(String email, String name, String surname, Set<Role> roles) {
+		super();
+		this.email = email;
+		this.name = name;
+		this.surname = surname;
+		this.roles = roles;
 	}
 
 	public Long getId() {
@@ -112,5 +129,12 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 
+	public Set<UserTest> getUserTests() {
+		return userTests;
+	}
+
+	public void setUserTests(Set<UserTest> userTests) {
+		this.userTests = userTests;
+	}
 
 }

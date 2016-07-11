@@ -4,15 +4,19 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionJson implements Serializable{
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class QuestionJson implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1130817324023504443L;
-	
-	Long id;
-	String questionText;
-	List<String> options;
+
+	private Long id;
+	private String questionText;
+	private List<String> options;
+	private List<Boolean> answers;
 
 	public QuestionJson(Long id, String questionText, List<String> options) {
 		super();
@@ -42,11 +46,19 @@ public class QuestionJson implements Serializable{
 	}
 
 	public void setOptions(List<String> options) {
-		List<String> newOptions= new ArrayList<>();
+		List<String> newOptions = new ArrayList<>();
 		for (String option : options) {
 			newOptions.add(option);
 		}
 		this.options = newOptions;
+	}
+
+	public List<Boolean> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Boolean> answers) {
+		this.answers = answers;
 	}
 
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 var myapp = angular.module('myApp', ['ngResource', 'ngRoute', 'ngAnimate',
-    'http-auth-interceptor'
+    'http-auth-interceptor' , 'timer', 'ngStorage'
 ]);
 
 myapp.constant('USER_ROLES', {

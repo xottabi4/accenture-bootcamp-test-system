@@ -1,82 +1,87 @@
-/*
+
 package com.accenture.abts.spring.models;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "user_response")
+public class UserResponse implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6321249853809905735L;
 
+	@Id
+	@Column(name = "user_response_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-public class UserResponse {
-	@Id
-	@Column(name = "response_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long response_id;
-	
-	@Id
-	@Column(name = "test_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long test_id;
-	
-	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "question_id")
+	private Question question;
+
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "test_id")
+	private UserTest userTest;
+
 	@NotNull
 	@Column(name = "option_val")
-	private String option_val;
-	
-	
+	private String optionVal;
+
 	@NotNull
-	@Column(name = "answered_text")
-	private String answered_text;
+	@Column(name = "answered_text", length=512)
+	private String answeredText;
 
-
-	public Long getResponse_id() {
-		return response_id;
+	public Long getId() {
+		return id;
 	}
 
-
-	public void setResponse_id(Long response_id) {
-		this.response_id = response_id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-
-	public Long getTest_id() {
-		return test_id;
+	public Question getQuestion() {
+		return question;
 	}
 
-
-	public void setTest_id(Long test_id) {
-		this.test_id = test_id;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
-
-	public String getOption_val() {
-		return option_val;
+	public UserTest getUserTest() {
+		return userTest;
 	}
 
-
-	public void setOption_val(String option_val) {
-		this.option_val = option_val;
+	public void setUserTest(UserTest userTest) {
+		this.userTest = userTest;
 	}
 
-
-	public String getAnswered_text() {
-		return answered_text;
+	public String getOptionVal() {
+		return optionVal;
 	}
 
-
-	public void setAnswered_text(String answered_text) {
-		this.answered_text = answered_text;
+	public void setOptionVal(String optionVal) {
+		this.optionVal = optionVal;
 	}
-	
-	
-	
-	
+
+	public String getAnsweredText() {
+		return answeredText;
+	}
+
+	public void setAnsweredText(String answeredText) {
+		this.answeredText = answeredText;
+	}
 
 }
-*/

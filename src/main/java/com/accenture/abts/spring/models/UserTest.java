@@ -10,37 +10,41 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "questions")
-public class Question {
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+@Entity
+@Table(name = "user_test")
+public class UserTest {
 	@Id
-	@Column(name = "q_id")
+	@Column(name = "user_test_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@NotNull
-	@Column(name = "question_id")
-	private Long number;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	@JsonManagedReference
+	private User user;
 
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "test_id")
+	@JsonManagedReference
 	private Test test;
 
 	@NotNull
-	@Column(name = "question_text", length = 512)
-	private String text;
+	@Column(name = "date")
+	private String date;
 
-	public Question() {
+	public UserTest() {
 		super();
 	}
 
-	public Question(Long number, Test test, String text) {
+	public UserTest(User user, Test test, String date) {
 		super();
-		this.number = number;
+		this.user = user;
 		this.test = test;
-		this.text = text;
+		this.date = date;
 	}
 
 	public Long getId() {
@@ -51,12 +55,12 @@ public class Question {
 		this.id = id;
 	}
 
-	public Long getNumber() {
-		return number;
+	public User getUser() {
+		return user;
 	}
 
-	public void setNumber(Long number) {
-		this.number = number;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Test getTest() {
@@ -67,12 +71,12 @@ public class Question {
 		this.test = test;
 	}
 
-	public String getText() {
-		return text;
+	public String getDate() {
+		return date;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 }
