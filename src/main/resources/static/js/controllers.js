@@ -82,7 +82,7 @@ myapp.controller('LoginController',
 								
 			})
 			$http({
-                url: "http://localhost:8080/applicant/get-Answers",
+                url: "http://localhost:8080/applicant/-Answers",
                 method: 'POST',
                 params: {testType: 'Technical'},
                 headers: {
