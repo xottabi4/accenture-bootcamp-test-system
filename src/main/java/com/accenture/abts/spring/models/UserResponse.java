@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-
 @Entity
 @Table(name = "user_response")
 public class UserResponse implements Serializable {

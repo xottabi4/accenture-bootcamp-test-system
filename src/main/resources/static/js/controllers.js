@@ -95,26 +95,6 @@ myapp.controller('LoginController', function($rootScope, $scope, AuthSharedServi
                 }) //.success().error();
         })
     })
-}).controller("Engilsh_test_Controlle", function($scope, $http) {
-    $http.get('http://localhost:8080/applicant/get-questions', {
-        params: {
-            testType: 'Language'
-        }
-    }).success(function(data) {
-        $scope.questions = data.questions;
-        $scope.option = $scope.questions.option;
-        console.log($scope.questions.option);
-    })
-}).controller("Tehnica_test_lController", function($scope, $http) {
-    $http.get('http://localhost:8080/applicant/get-questions', {
-        params: {
-            testType: 'Technical'
-        }
-    }).success(function(data) {
-        $scope.questions = data.questions;
-        $scope.option = $scope.questions.option;
-        console.log($scope.questions.option);
-    })
 }).controller('ErrorController', function($scope, $routeParams) {
     $scope.code = $routeParams.code;
     switch ($scope.code) {

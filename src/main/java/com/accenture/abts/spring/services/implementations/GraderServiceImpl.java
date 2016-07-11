@@ -42,6 +42,7 @@ public class GraderServiceImpl implements GraderService {
 
 	@Override
 	public TestAnswerJson viewTest(String testType) throws IncorectTestTypeException {
+//		TODO not finished
 		List<String> correctValues = new ArrayList<>();
 		correctValues.add("Language");
 		correctValues.add("Technical");
